@@ -153,7 +153,7 @@ create table wholesale_order
     wso_invoice_title      varchar(50),                                     #抬头
     wso_retailer_id        int(10),                                         #外键	经销商编码
     wso_out_warehouse_id   int(10),                                         #外键	出货仓库编号
-    wso_detail_address_id  varchar(100),                                    #详细送货地址
+    wso_detail_address  varchar(100),                                    #详细送货地址
     wso_receiver           varchar(20),                                     #收货人
     wso_phone              varchar(20),                                     #联系电话
     wso_pickup_method      varchar(10)
@@ -353,7 +353,7 @@ values (null, '抬头1', 1, 5, 5, 20201101, null, '', 7, 53, 920, 920, 98, '', '
 
 # 插入批发订单表测试数据
 insert into wholesale_order(wso_order_number, wso_invoice_title, wso_retailer_id, wso_out_warehouse_id,
-                            wso_detail_address_id, wso_receiver, wso_phone, wso_pickup_method, wso_remark,
+                            wso_detail_address, wso_receiver, wso_phone, wso_pickup_method, wso_remark,
                             wso_product_id, wso_product_qty, wso_invoice_price, wso_total_price, wso_volume,
                             wso_file_path, wso_reason, wso_reviewer_user_name)
 values (null, '抬头1', 1, 5, '详细地址1', '收件人1', '18911451401', '汽运', '', 7, 53, 920, 920, 98, '', '', 'operator1'),
@@ -368,11 +368,11 @@ values (null, '抬头1', 1, 5, '详细地址1', '收件人1', '18911451401', '�
        (null, '抬头10', 10, 1, '详细地址10', '收件人10', '18911451410', '汽运', '', 8, 17, 788, 788, 09, '', '', 'operator10');
 
 # 插入零售订单表测试数据
-insert into retail_order(rto_transaction_id, rto_retailer_id, rto_source_website, rto_source_store, rto_order_status,
-                         rto_shipment_status, rto_order_date, rto_paid_date, rto_shipment_date, rto_order_price,
-                         rto_actually_paid, rto_weight, rto_freight, rto_shipping_address, rto_receiver_name,
-                         rto_receiver_phone, rto_express_company, rto_express_number)
-VALUES ();
+# insert into retail_order(rto_transaction_id, rto_retailer_id, rto_source_website, rto_source_store, rto_order_status,
+#                          rto_shipment_status, rto_order_date, rto_paid_date, rto_shipment_date, rto_order_price,
+#                          rto_actually_paid, rto_weight, rto_freight, rto_shipping_address, rto_receiver_name,
+#                          rto_receiver_phone, rto_express_company, rto_express_number)
+# VALUES ();
 
 # 提交事务
 commit;
