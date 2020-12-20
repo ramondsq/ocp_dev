@@ -9,7 +9,7 @@ Dev Practice
 
 #### 安装教程
 
-1.  xxxx
+1.  qrtest
 2.  xxxx
 3.  xxxx
 
