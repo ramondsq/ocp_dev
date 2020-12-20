@@ -14,7 +14,7 @@ public class Product {
     private Double product_length;
     private Double product_width;
     private Double product_height;
-    private String is_selling;
+    private Integer is_selling;
 
 
     public Integer getProduct_id() {
@@ -121,11 +121,11 @@ public class Product {
         this.product_height = product_height;
     }
 
-    public String getIs_selling() {
+    public Integer getIs_selling() {
         return is_selling;
     }
 
-    public void setIs_selling(String is_selling) {
+    public void setIs_selling(Integer is_selling) {
         this.is_selling = is_selling;
     }
 }
