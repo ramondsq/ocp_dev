@@ -11,5 +11,4 @@
         select *
         from operator
     </select>
-
 </mapper>
