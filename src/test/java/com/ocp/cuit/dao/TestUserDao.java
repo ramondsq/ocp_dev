@@ -15,6 +15,11 @@ public class TestUserDao {
     }
 
     @Test
+    public void testGetAllRetailerAddress() {
+
+    }
+
+    @Test
     public void testGetAllOperators() {
         System.out.println(userDao.getAllOperators());
     }
