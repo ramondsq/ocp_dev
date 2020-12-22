@@ -3,31 +3,27 @@ package com.ocp.cuit.pojo;
 import java.util.Date;
 
 public class WholesaleOrder {
-   private Integer wso_order_number;
-   private Date wso_submit_datetime;
-   private String wso_invoice_title;
-   private Integer wso_retailer_id;
-   private Integer wso_out_warehouse_id;
-   private String wso_detail_address;
-   private String wso_receiver;
-   private String wso_phone;
-   private String wso_pickup_method;
-   private String wso_remark;
-   private Integer wso_product_id;
-   private Double wso_product_qty;
-   private Double wso_invoice_price;
-   private Double wso_total_price;
-   private Double wso_volume;
-   private String wso_file_path;
-   private String wso_status;
-   private String wso_reason;
-   private String wso_reviewer;
+   private String wso_order_number;         //订单编号
+   private Date wso_submit_datetime;         //订单提交时间
+   private String wso_invoice_title;         //抬头
+   private Integer wso_retailer_id;          //经销商编号
+   private Integer wso_out_warehouse_id;     //出货仓库编号
+   private String wso_detail_address;        //详细送货地址
+   private String wso_receiver;              //收货人
+   private String wso_phone;                 //手机号
+   private String wso_pickup_method;         //提货方式
+   private String wso_remark;                //备注
+   private String wso_file_path;             //文件路径
+   private String wso_status;                //订单状态
+   private String wso_reason;                //驳回原因
+   private String wso_reviewer;              //初审人用户名
+   private String wso_rereviewer;            //复核人用户名
 
-   public Integer getWso_order_number() {
+   public String getWso_order_number() {
       return wso_order_number;
    }
 
-   public void setWso_order_number(Integer wso_order_number) {
+   public void setWso_order_number(String wso_order_number) {
       this.wso_order_number = wso_order_number;
    }
 
@@ -103,46 +99,6 @@ public class WholesaleOrder {
       this.wso_remark = wso_remark;
    }
 
-   public Integer getWso_product_id() {
-      return wso_product_id;
-   }
-
-   public void setWso_product_id(Integer wso_product_id) {
-      this.wso_product_id = wso_product_id;
-   }
-
-   public Double getWso_product_qty() {
-      return wso_product_qty;
-   }
-
-   public void setWso_product_qty(Double wso_product_qty) {
-      this.wso_product_qty = wso_product_qty;
-   }
-
-   public Double getWso_invoice_price() {
-      return wso_invoice_price;
-   }
-
-   public void setWso_invoice_price(Double wso_invoice_price) {
-      this.wso_invoice_price = wso_invoice_price;
-   }
-
-   public Double getWso_total_price() {
-      return wso_total_price;
-   }
-
-   public void setWso_total_price(Double wso_total_price) {
-      this.wso_total_price = wso_total_price;
-   }
-
-   public Double getWso_volume() {
-      return wso_volume;
-   }
-
-   public void setWso_volume(Double wso_volume) {
-      this.wso_volume = wso_volume;
-   }
-
    public String getWso_file_path() {
       return wso_file_path;
    }
@@ -175,6 +131,14 @@ public class WholesaleOrder {
       this.wso_reviewer = wso_reviewer;
    }
 
+   public String getWso_rereviewer() {
+      return wso_rereviewer;
+   }
+
+   public void setWso_rereviewer(String wso_rereviewer) {
+      this.wso_rereviewer = wso_rereviewer;
+   }
+
    @Override
    public String toString() {
       return "WholesaleOrder{" +
@@ -188,15 +152,11 @@ public class WholesaleOrder {
               ", wso_phone='" + wso_phone + '\'' +
               ", wso_pickup_method='" + wso_pickup_method + '\'' +
               ", wso_remark='" + wso_remark + '\'' +
-              ", wso_product_id=" + wso_product_id +
-              ", wso_product_qty=" + wso_product_qty +
-              ", wso_invoice_price=" + wso_invoice_price +
-              ", wso_total_price=" + wso_total_price +
-              ", wso_volume=" + wso_volume +
               ", wso_file_path='" + wso_file_path + '\'' +
               ", wso_status='" + wso_status + '\'' +
               ", wso_reason='" + wso_reason + '\'' +
               ", wso_reviewer='" + wso_reviewer + '\'' +
+              ", wso_rereviewer='" + wso_rereviewer + '\'' +
               '}';
    }
 }

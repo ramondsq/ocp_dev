@@ -9,5 +9,10 @@ import java.util.List;
 @Component
 @Mapper
 public interface WarehouseDao {
+
+    /**
+     * 获取所有仓库信息
+     * @return 仓库信息列表
+     */
     List<Warehouse> getAllWarehouses();
 }
