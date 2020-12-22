@@ -236,21 +236,22 @@ values (1, '产品线1', '产品名称1', 742, '件', '电子', 'model-88', 355,
 # 创建备货订单表
 create table stock_order
 (
-    sto_order_number       varchar(20) NOT NULL PRIMARY KEY,                                   #订单编号
-    sto_invoice_title      varchar(50),                                                        #抬头
-    sto_retailer_id        int(10),                                                            #经销商编码 外键
-    sto_out_warehouse_id   int(10),                                                            #出货仓库编号 外键
-    sto_in_warehouse_id    int(10),                                                            #入货仓库编号 外键
-    sto_pickup_method      varchar(10)          default '配送' check (sto_pickup_method = '配送'), #提货方式 (仅配送)
-    sto_period_demand      date,                                                               #备货需求时间段_年月日 (上旬：1日 中旬：11日 下旬：20)
-    sto_submit_datetime    datetime,                                                           #提交备货订单时间
-    sto_remark             varchar(100),                                                       #备注
-    sto_file_path          varchar(50),                                                        #附件文件路径
-    sto_status             int(20)     NOT NULL default 0 check (sto_status = 0 or sto_status = 1 or sto_status = 2 or
-                                                                 sto_status = 3 or
-                                                                 sto_status = 4),              #审核状态 （0待处理、1待初审，2待复核，3已通过，4已驳回）
-    sto_reason             varchar(100),                                                       #不通过原因
-    sto_reviewer_user_name varchar(10)                                                         #审核人用户名 外键
+    sto_order_number         varchar(20) NOT NULL PRIMARY KEY,                                   #订单编号
+    sto_invoice_title        varchar(50),                                                        #抬头
+    sto_retailer_id          int(10),                                                            #经销商编码 外键
+    sto_out_warehouse_id     int(10),                                                            #出货仓库编号 外键
+    sto_in_warehouse_id      int(10),                                                            #入货仓库编号 外键
+    sto_pickup_method        varchar(10)          default '配送' check (sto_pickup_method = '配送'), #提货方式 (仅配送)
+    sto_period_demand        date,                                                               #备货需求时间段_年月日 (上旬：1日 中旬：11日 下旬：20)
+    sto_submit_datetime      datetime,                                                           #提交备货订单时间
+    sto_remark               varchar(100),                                                       #备注
+    sto_file_path            varchar(50),                                                        #附件文件路径
+    sto_status               int(20)     NOT NULL default 0 check (sto_status = 0 or sto_status = 1 or sto_status = 2 or
+                                                                   sto_status = 3 or
+                                                                   sto_status = 4),              #审核状态 （0待处理、1待初审，2待复核，3已通过，4已驳回）
+    sto_reason               varchar(100),                                                       #不通过原因
+    sto_reviewer_user_name   varchar(10),                                                        #审核人用户名
+    sto_rereviewer_user_name varchar(10)                                                         #审核人用户名
 ) engine = InnoDB
   default charset = UTF8;
 # 添加外键约束
@@ -260,44 +261,43 @@ alter table stock_order
     add constraint sto_out_warehouse_id foreign key (sto_out_warehouse_id) references warehouse (warehouse_id);
 alter table stock_order
     add constraint sto_in_warehouse_id foreign key (sto_in_warehouse_id) references warehouse (warehouse_id);
-alter table stock_order
-    add constraint sto_reviewer foreign key (sto_reviewer_user_name) references operator (op_user_name);
 # 插入备货订单表测试数据
 insert into stock_order(sto_order_number, sto_invoice_title, sto_retailer_id, sto_out_warehouse_id, sto_in_warehouse_id,
                         sto_period_demand, sto_submit_datetime, sto_remark, sto_file_path, sto_reason,
-                        sto_reviewer_user_name)
-values ('202012210000', '抬头1', 1, 5, 5, 20201101, null, '', '', '', 'operator1'),
-       ('202012210001', '抬头2', 2, 7, 3, 20201101, null, '', '', '', 'operator2'),
-       ('202012210002', '抬头3', 3, 7, 9, 20201101, null, '', '', '', 'operator3'),
-       ('202012210003', '抬头4', 4, 2, 7, 20201115, null, '', '', '', 'operator4'),
-       ('202012210004', '抬头5', 5, 3, 9, 20201115, null, '', '', '', 'operator5'),
-       ('202012210005', '抬头6', 6, 6, 6, 20201115, null, '', '', '', 'operator6'),
-       ('202012210006', '抬头7', 7, 5, 8, 20201130, null, '', '', '', 'operator7'),
-       ('202012210007', '抬头8', 8, 4, 3, 20201130, null, '', '', '', 'operator8'),
-       ('202012210008', '抬头9', 9, 8, 8, 20201130, null, '', '', '', 'operator9'),
-       ('202012210009', '抬头10', 10, 1, 7, 20201130, null, '', '', '', 'operator10');
+                        sto_reviewer_user_name, sto_rereviewer_user_name)
+values ('202012210000', '抬头1', 1, 5, 5, 20201101, null, '', '', '', '', ''),
+       ('202012210001', '抬头2', 2, 7, 3, 20201101, null, '', '', '', '', ''),
+       ('202012210002', '抬头3', 3, 7, 9, 20201101, null, '', '', '', '', ''),
+       ('202012210003', '抬头4', 4, 2, 7, 20201115, null, '', '', '', '', ''),
+       ('202012210004', '抬头5', 5, 3, 9, 20201115, null, '', '', '', '', ''),
+       ('202012210005', '抬头6', 6, 6, 6, 20201115, null, '', '', '', '', ''),
+       ('202012210006', '抬头7', 7, 5, 8, 20201130, null, '', '', '', '', ''),
+       ('202012210007', '抬头8', 8, 4, 3, 20201130, null, '', '', '', '', ''),
+       ('202012210008', '抬头9', 9, 8, 8, 20201130, null, '', '', '', '', ''),
+       ('202012210009', '抬头10', 10, 1, 7, 20201130, null, '', '', '', '', '');
 
 
 # 创建批发订单表
 create table wholesale_order
 (
-    wso_order_number       varchar(20) NOT NULL PRIMARY KEY,                      #不为空		主键	订单编号
-    wso_invoice_title      varchar(50),                                           #抬头
-    wso_retailer_id        int(10),                                               #外键	经销商编码
-    wso_out_warehouse_id   int(10),                                               #外键	出货仓库编号
-    wso_detail_address     varchar(100),                                          #详细送货地址
-    wso_receiver           varchar(20),                                           #收货人
-    wso_phone              varchar(20),                                           #联系电话
-    wso_pickup_method      varchar(10)
+    wso_order_number         varchar(20) NOT NULL PRIMARY KEY,                      #不为空		主键	订单编号
+    wso_invoice_title        varchar(50),                                           #抬头
+    wso_retailer_id          int(10),                                               #外键	经销商编码
+    wso_out_warehouse_id     int(10),                                               #外键	出货仓库编号
+    wso_detail_address       varchar(100),                                          #详细送货地址
+    wso_receiver             varchar(20),                                           #收货人
+    wso_phone                varchar(20),                                           #联系电话
+    wso_pickup_method        varchar(10)
         check (wso_pickup_method in ('汽运', '海运', '铁运', '快递', '自提')),
     #提货方式(汽运，海运，铁运，快递和自提)
-    wso_remark             varchar(100),                                          #备注
-    wso_file_path          varchar(50),                                           #附件文件路径
-    wso_status             int(10)     NOT NULL default 0 check (wso_status = 0 or wso_status = 1 or wso_status = 2 or
-                                                                 wso_status = 3 or
-                                                                 wso_status = 4), #不为空 审核状态（0待处理、1待初审，2待复核，3已通过，4已驳回）
-    wso_reason             varchar(100),                                          #不通过原因
-    wso_reviewer_user_name varchar(10)                                            #外键	审核人姓名
+    wso_remark               varchar(100),                                          #备注
+    wso_file_path            varchar(50),                                           #附件文件路径
+    wso_status               int(10)     NOT NULL default 0 check (wso_status = 0 or wso_status = 1 or wso_status = 2 or
+                                                                   wso_status = 3 or
+                                                                   wso_status = 4), #不为空 审核状态（0待处理、1待初审，2待复核，3已通过，4已驳回）
+    wso_reason               varchar(100),                                          #不通过原因
+    wso_reviewer_user_name   varchar(10),                                           #初审人用户名
+    wso_rereviewer_user_name varchar(10)                                            #复核人用户名
 ) engine = InnoDB
   default charset = UTF8;
 # 添加外键约束
@@ -307,22 +307,20 @@ alter table wholesale_order
     add constraint wso_out_warehouse_id foreign key (wso_out_warehouse_id) references warehouse (warehouse_id);
 # alter table wholesale_order
 #     add constraint wso_product_id foreign key (wso_product_id) references product (product_id);
-alter table wholesale_order
-    add constraint wso_reviewer foreign key (wso_reviewer_user_name) references operator (op_user_name);
 # 插入批发订单表测试数据
 insert into wholesale_order(wso_order_number, wso_invoice_title, wso_retailer_id, wso_out_warehouse_id,
                             wso_detail_address, wso_receiver, wso_phone, wso_pickup_method, wso_remark,
-                            wso_file_path, wso_reason, wso_reviewer_user_name)
-values ('202012210010', '抬头1', 1, 5, '详细地址1', '收件人1', '18911451401', '汽运', '', '', '', 'operator1'),
-       ('202012210011', '抬头2', 2, 7, '详细地址2', '收件人2', '18911451402', '汽运', '', '', '', 'operator2'),
-       ('202012210012', '抬头3', 3, 7, '详细地址3', '收件人3', '18911451403', '汽运', '', '', '', 'operator3'),
-       ('202012210013', '抬头4', 4, 2, '详细地址4', '收件人4', '18911451404', '汽运', '', '', '', 'operator4'),
-       ('202012210014', '抬头5', 5, 3, '详细地址5', '收件人5', '18911451405', '汽运', '', '', '', 'operator5'),
-       ('202012210015', '抬头6', 6, 6, '详细地址6', '收件人6', '18911451406', '汽运', '', '', '', 'operator6'),
-       ('202012210016', '抬头7', 7, 5, '详细地址7', '收件人7', '18911451407', '汽运', '', '', '', 'operator7'),
-       ('202012210017', '抬头8', 8, 4, '详细地址8', '收件人8', '18911451408', '汽运', '', '', '', 'operator8'),
-       ('202012210018', '抬头9', 9, 8, '详细地址9', '收件人9', '18911451409', '汽运', '', '', '', 'operator9'),
-       ('202012210019', '抬头10', 10, 1, '详细地址10', '收件人10', '18911451410', '汽运', '', '', '', 'operator10');
+                            wso_file_path, wso_reason, wso_reviewer_user_name, wso_rereviewer_user_name)
+values ('202012210010', '抬头1', 1, 5, '详细地址1', '收件人1', '18911451401', '汽运', '', '', '', '', ''),
+       ('202012210011', '抬头2', 2, 7, '详细地址2', '收件人2', '18911451402', '汽运', '', '', '', '', ''),
+       ('202012210012', '抬头3', 3, 7, '详细地址3', '收件人3', '18911451403', '汽运', '', '', '', '', ''),
+       ('202012210013', '抬头4', 4, 2, '详细地址4', '收件人4', '18911451404', '汽运', '', '', '', '', ''),
+       ('202012210014', '抬头5', 5, 3, '详细地址5', '收件人5', '18911451405', '汽运', '', '', '', '', ''),
+       ('202012210015', '抬头6', 6, 6, '详细地址6', '收件人6', '18911451406', '汽运', '', '', '', '', ''),
+       ('202012210016', '抬头7', 7, 5, '详细地址7', '收件人7', '18911451407', '汽运', '', '', '', '', ''),
+       ('202012210017', '抬头8', 8, 4, '详细地址8', '收件人8', '18911451408', '汽运', '', '', '', '', ''),
+       ('202012210018', '抬头9', 9, 8, '详细地址9', '收件人9', '18911451409', '汽运', '', '', '', '', ''),
+       ('202012210019', '抬头10', 10, 1, '详细地址10', '收件人10', '18911451410', '汽运', '', '', '', '', '');
 
 
 # 创建零售订单表
@@ -372,10 +370,10 @@ create table stockorder_product
     PRIMARY KEY (sop_order_id, sop_product_id)
 ) engine = InnoDB
   default charset = UTF8;
-insert into stockorder_product (sop_order_id, sop_product_id, sop_product_qty, sop_invoice_price, sop_total_price, sop_volume)
-values
-('202012210001', 0, 100, 200, 100, 10),
-('202012210001', 2, 100, 200, 100, 10);
+insert into stockorder_product (sop_order_id, sop_product_id, sop_product_qty, sop_invoice_price, sop_total_price,
+                                sop_volume)
+values ('202012210001', 0, 100, 200, 100, 10),
+       ('202012210001', 2, 100, 200, 100, 10);
 
 
 # 创建批发订单产品表
@@ -390,9 +388,10 @@ create table wholesaleorder_product
     PRIMARY KEY (wsop_order_id, wsop_product_id)
 ) engine = InnoDB
   default charset = UTF8;
-insert into wholesaleorder_product (wsop_order_id, wsop_product_id, wsop_product_qty, wsop_invoice_price, wsop_total_price, wsop_volume)
+insert into wholesaleorder_product (wsop_order_id, wsop_product_id, wsop_product_qty, wsop_invoice_price,
+                                    wsop_total_price, wsop_volume)
 VALUES ('202012210003', 2, 100, 200, 300, 120),
-       ('202012210003', 3, 100, 400, 200,  10);
+       ('202012210003', 3, 100, 400, 200, 10);
 
 # 提交事务
 commit;
