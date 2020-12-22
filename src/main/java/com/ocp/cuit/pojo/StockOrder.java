@@ -2,31 +2,28 @@ package com.ocp.cuit.pojo;
 
 import java.util.Date;
 
+//备货订单
 public class StockOrder {
-   private Integer sto_order_number;
-   private String sto_invoice_title;
-   private Integer sto_retailer_id;
-   private Integer sto_out_warehouse_id;
-   private Integer sto_in_warehouse_id;
-   private String sto_pickup_method;
-   private Date sto_period_demand;
-   private Date sto_submit_datetime;
-   private String sto_remark;
-   private Integer sto_product_id;
-   private Double sto_product_qty;
-   private Double sto_invoice_price;
-   private Double sto_total_price;
-   private Double sto_volume;
-   private String sto_file_path;
-   private String sto_status;
-   private String sto_reason;
-   private String sto_reviewer;
+   private String sto_order_number;      //编号
+   private String sto_invoice_title;      //抬头
+   private Integer sto_retailer_id;       //经销商编号
+   private Integer sto_out_warehouse_id;  //出货仓库编号
+   private Integer sto_in_warehouse_id;   //进货仓库编号
+   private String sto_pickup_method;      //提货方式
+   private Date sto_period_demand;        //备货需求时间段
+   private Date sto_submit_datetime;      //订单提交日期
+   private String sto_remark;             //备注
+   private String sto_file_path;          //文件路径
+   private String sto_status;             //订单状态
+   private String sto_reason;             //驳回原因
+   private String sto_reviewer;           //初审人用户名
+   private String sto_rereviewer;         //复核人用户名
 
-   public Integer getSto_order_number() {
+   public String getSto_order_number() {
       return sto_order_number;
    }
 
-   public void setSto_order_number(Integer sto_order_number) {
+   public void setSto_order_number(String sto_order_number) {
       this.sto_order_number = sto_order_number;
    }
 
@@ -94,46 +91,6 @@ public class StockOrder {
       this.sto_remark = sto_remark;
    }
 
-   public Integer getSto_product_id() {
-      return sto_product_id;
-   }
-
-   public void setSto_product_id(Integer sto_product_id) {
-      this.sto_product_id = sto_product_id;
-   }
-
-   public Double getSto_product_qty() {
-      return sto_product_qty;
-   }
-
-   public void setSto_product_qty(Double sto_product_qty) {
-      this.sto_product_qty = sto_product_qty;
-   }
-
-   public Double getSto_invoice_price() {
-      return sto_invoice_price;
-   }
-
-   public void setSto_invoice_price(Double sto_invoice_price) {
-      this.sto_invoice_price = sto_invoice_price;
-   }
-
-   public Double getSto_total_price() {
-      return sto_total_price;
-   }
-
-   public void setSto_total_price(Double sto_total_price) {
-      this.sto_total_price = sto_total_price;
-   }
-
-   public Double getSto_volume() {
-      return sto_volume;
-   }
-
-   public void setSto_volume(Double sto_volume) {
-      this.sto_volume = sto_volume;
-   }
-
    public String getSto_file_path() {
       return sto_file_path;
    }
@@ -166,6 +123,14 @@ public class StockOrder {
       this.sto_reviewer = sto_reviewer;
    }
 
+   public String getSto_rereviewer() {
+      return sto_rereviewer;
+   }
+
+   public void setSto_rereviewer(String sto_rereviewer) {
+      this.sto_rereviewer = sto_rereviewer;
+   }
+
    @Override
    public String toString() {
       return "StockOrder{" +
@@ -178,15 +143,11 @@ public class StockOrder {
               ", sto_period_demand=" + sto_period_demand +
               ", sto_submit_datetime=" + sto_submit_datetime +
               ", sto_remark='" + sto_remark + '\'' +
-              ", sto_product_id=" + sto_product_id +
-              ", sto_product_qty=" + sto_product_qty +
-              ", sto_invoice_price=" + sto_invoice_price +
-              ", sto_total_price=" + sto_total_price +
-              ", sto_volume=" + sto_volume +
               ", sto_file_path='" + sto_file_path + '\'' +
               ", sto_status='" + sto_status + '\'' +
               ", sto_reason='" + sto_reason + '\'' +
               ", sto_reviewer='" + sto_reviewer + '\'' +
+              ", sto_rereviewer='" + sto_rereviewer + '\'' +
               '}';
    }
 }

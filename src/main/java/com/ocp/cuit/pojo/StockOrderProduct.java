@@ -1,12 +1,13 @@
 package com.ocp.cuit.pojo;
 
+//备货订单-产品映射
 public class StockOrderProduct {
-   private String stp_order_number;
-   private Integer stp_product_id;
-   private Double stp_product_qty;
-   private Double stp_invoice_price;
-   private Double stp_total_price;
-   private Double stp_volume;
+   private String stp_order_number;    //订单编号
+   private Integer stp_product_id;     //产品编号
+   private Double stp_product_qty;     //产品数量
+   private Double stp_invoice_price;   //开票价格
+   private Double stp_total_price;     //总金额
+   private Double stp_volume;          //总体积
 
    public String getStp_order_number() {
       return stp_order_number;

@@ -1,10 +1,11 @@
 package com.ocp.cuit.pojo;
 
+//经销商地址信息
 public class RetailerAddress {
-    private Integer rta_retailer_id;
-    private String rta_address;
-    private String rta_receiver_name;
-    private String rta_phone;
+    private Integer rta_retailer_id;        //编号
+    private String rta_address;             //地址
+    private String rta_receiver_name;       //收件人姓名
+    private String rta_phone;               //手机号
 
     public Integer getRta_retailer_id() {
         return rta_retailer_id;

@@ -1,8 +1,9 @@
 package com.ocp.cuit.pojo;
 
+//经销商登录信息
 public class RetailerLogin {
-    private String rtlog_user_name;
-    private String rtlog_password;
+    private String rtlog_user_name;     //用户名
+    private String rtlog_password;      //密码
 
     public String getRtlog_user_name() {
         return rtlog_user_name;

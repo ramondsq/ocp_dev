@@ -2,31 +2,32 @@ package com.ocp.cuit.pojo;
 
 import java.util.Date;
 
+//零售订单
 public class RetailOrder {
-   private Integer rto_transaction_id;
-   private Integer rto_retailer_id;
-   private String rto_source_website;
-   private String rto_source_store;
-   private String rto_order_status;
-   private String rto_shipment_status;
-   private Date rto_order_date;
-   private Date rto_paid_date;
-   private Date rto_shipment_date;
-   private Double rto_order_price;
-   private Double rto_actually_paid;
-   private Double rto_weight;
-   private Double rto_freight;
-   private String rto_shipping_address;
-   private String rto_receiver_name;
-   private String rto_receiver_phone;
-   private String rto_express_company;
-   private Integer rto_express_number;
+   private String rto_transaction_id;    //交易编号
+   private Integer rto_retailer_id;       //所属经销商编号
+   private String rto_source_website;     //来源网站
+   private String rto_source_store;       //来源网店
+   private String rto_order_status;       //订单状态
+   private String rto_shipment_status;    //物流状态
+   private Date rto_order_date;           //下单日期
+   private Date rto_paid_date;            //付款日期
+   private Date rto_shipment_date;        //发货日期
+   private Double rto_order_price;        //订单价格
+   private Double rto_actually_paid;      //实付金额
+   private Double rto_weight;             //重量
+   private Double rto_freight;            //运费
+   private String rto_shipping_address;   //收货地址
+   private String rto_receiver_name;      //收件人姓名
+   private String rto_receiver_phone;     //收件人手机号
+   private String rto_express_company;    //快递公司
+   private Integer rto_express_number;    //快递单号
 
-   public Integer getRto_transaction_id() {
+   public String getRto_transaction_id() {
       return rto_transaction_id;
    }
 
-   public void setRto_transaction_id(Integer rto_transaction_id) {
+   public void setRto_transaction_id(String rto_transaction_id) {
       this.rto_transaction_id = rto_transaction_id;
    }
 

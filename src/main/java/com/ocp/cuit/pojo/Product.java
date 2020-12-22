@@ -1,20 +1,21 @@
 package com.ocp.cuit.pojo;
 
+//产品表
 public class Product {
-    private Integer product_id;
-    private String product_line;
-    private String product_name;
-    private Integer product_qty;
-    private String unit_measurement_name;
-    private String product_type;
-    private String product_model;
-    private Double product_standard_price;
-    private Double product_volume;
-    private Double product_weight;
-    private Double product_length;
-    private Double product_width;
-    private Double product_height;
-    private Integer is_selling;
+    private Integer product_id;             //编号
+    private String product_line;            //生产线名
+    private String product_name;            //名称
+    private Integer product_qty;            //数量
+    private String unit_measurement_name;   //计量单位
+    private String product_type;            //类型
+    private String product_model;           //型号
+    private Double product_standard_price;  //标准价格
+    private Double product_volume;          //体积
+    private Double product_weight;          //重量
+    private Double product_length;          //长度
+    private Double product_width;           //宽度
+    private Double product_height;          //高度
+    private Integer is_selling;             //是否正在销售
 
 
     public Integer getProduct_id() {

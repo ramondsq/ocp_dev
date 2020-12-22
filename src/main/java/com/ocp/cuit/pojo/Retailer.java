@@ -1,19 +1,20 @@
 package com.ocp.cuit.pojo;
 
+//经销商信息
 public class Retailer {
-   private int retailer_id;
-   private String retailer_name;
-   private String retailer_shortname;
-   private String retailer_area;
-   private String retailer_store_name;
-   private String retailer_institute;
-   private String retailer_type;
-   private String retailer_user_name;
-   private String retailer_contact_name;
-   private String retailer_email;
-   private String retailer_phone;
-   private String retailer_status;
-   private String retailer_remark;
+   private int retailer_id;               //编号
+   private String retailer_name;          //名称
+   private String retailer_shortname;     //简称
+   private String retailer_area;          //区域
+   private String retailer_store_name;    //店名
+   private String retailer_institute;     //机构
+   private String retailer_type;          //类型
+   private String retailer_user_name;     //用户名
+   private String retailer_contact_name;  //联系人名
+   private String retailer_email;         //邮箱
+   private String retailer_phone;         //手机
+   private String retailer_status;        //帐号状态
+   private String retailer_remark;        //备注
 
 
    public int getRetailer_id() {

@@ -1,13 +1,14 @@
 package com.ocp.cuit.pojo;
 
+//仓库表
 public class Warehouse {
-   private Integer warehouse_id;
-   private String warehouse_name;
-   private String warehouse_status;
-   private String warehouse_contact_name;
-   private String warehouse_contact_phone;
-   private String warehouse_address;
-   private String warehouse_remark;
+   private Integer warehouse_id;             //仓库编号
+   private String warehouse_name;            //仓库名称
+   private String warehouse_status;          //状态
+   private String warehouse_contact_name;    //联系人姓名
+   private String warehouse_contact_phone;   //联系电话
+   private String warehouse_address;         //仓库地址
+   private String warehouse_remark;          //备注
 
    public Integer getWarehouse_id() {
       return warehouse_id;

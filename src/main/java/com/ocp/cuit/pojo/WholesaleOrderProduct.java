@@ -1,12 +1,13 @@
 package com.ocp.cuit.pojo;
 
+//批发订单-产品映射
 public class WholesaleOrderProduct {
-   private String wsp_order_number;
-   private Integer wsp_product_id;
-   private Double wsp_product_qty;
-   private Double wsp_invoice_price;
-   private Double wsp_total_price;
-   private Double wsp_volume;
+   private String wsp_order_number;    //订单编号
+   private Integer wsp_product_id;     //产品编号
+   private Double wsp_product_qty;     //数量
+   private Double wsp_invoice_price;   //开票价格
+   private Double wsp_total_price;     //总金额
+   private Double wsp_volume;          //总体积
 
    public String getWsp_order_number() {
       return wsp_order_number;
