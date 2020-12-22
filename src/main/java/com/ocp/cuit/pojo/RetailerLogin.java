@@ -1,5 +1,8 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 //经销商登录信息
 public class RetailerLogin {
     private String rtlog_user_name;     //用户名

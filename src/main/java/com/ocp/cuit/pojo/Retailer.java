@@ -1,5 +1,8 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 //经销商信息
 public class Retailer {
    private int retailer_id;               //编号

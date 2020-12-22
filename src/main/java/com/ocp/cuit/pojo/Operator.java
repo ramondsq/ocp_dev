@@ -1,5 +1,8 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 //运营人员
 public class Operator {
    private String op_user_name;     //用户名

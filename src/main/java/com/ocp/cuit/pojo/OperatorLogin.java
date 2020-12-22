@@ -1,5 +1,8 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 //运营人员登录信息
 public class OperatorLogin {
     private String oplog_user_name;     //用户名

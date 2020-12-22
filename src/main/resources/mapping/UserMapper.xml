@@ -3,12 +3,113 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ocp.cuit.dao.UserDao">
+    <select id="checkRetailerLogin" parameterType="RetailerLogin" resultType="RetailerLogin">
+        select *
+        from retailer_login
+        where rtlog_user_name = #{rtlog_user_name}
+        and rtlog_password = #{rtlog_password}
+    </select>
+    <select id="checkOperatorLogin" parameterType="OperatorLogin" resultType="OperatorLogin">
+        select *
+        from operator_login
+        where oplog_user_name = #{oplog_user_name}
+        and oplog_password = #{oplog_password}
+    </select>
+
     <select id="getAllRetailers" resultType="Retailer" >
         select *
         from retailer
     </select>
+    <select id="getRetailer" parameterType="Retailer" resultType="Retailer">
+        select *
+        from retailer
+        <where>
+            <if test="retailer_id != null">
+                and retailer_id = #{retailer_id}
+            </if>
+            <if test="retailer_name != null">
+                and retailer_name = #{retailer_name}
+            </if>
+            <if test="retailer_shortname != null">
+                and retailer_shortname = #{retailer_shortname}
+            </if>
+            <if test="retailer_area != null">
+                and retailer_area = #{retailer_area}
+            </if>
+            <if test="retailer_store_name != null">
+                and retailer_store_name = #{retailer_store_name}
+            </if>
+            <if test="retailer_institute != null">
+            and retailer_store_institute = #{retailer_store_institute}
+            </if>
+            <if test="retailer_type != null">
+                and retailer_store_type = #{retailer_store_type}
+            </if>
+            <if test="retailer_user_name != null">
+                and retailer_store_user_name = #{retailer_store_user_name}
+            </if>
+            <if test="retailer_contact_name != null">
+                and retailer_store_contact_name = #{retailer_store_contact_name}
+            </if>
+            <if test="retailer_email != null">
+                and retailer_store_email = #{retailer_store_email}
+            </if>
+            <if test="retailer_phone != null">
+                and retailer_store_phone = #{retailer_store_phone}
+            </if>
+            <if test="retailer_status != null">
+                and retailer_store_status = #{retailer_store_status}
+            </if>
+            <if test="retailer_remark != null">
+                and retailer_store_remark = #{retailer_store_remark}
+            </if>
+        </where>
+    </select>
+
+    <select id="getAllRetailerAddress" resultType="String">
+        select rta_address
+        from retailer_address
+    </select>
+
+    <select id="getRetailerAddress" parameterType="String" resultType="String">
+        select rta_address
+        from retailer_address
+        where rta_retailer_id = #{rta_retailer_id}
+    </select>
+
     <select id="getAllOperators" resultType="Operator">
         select *
         from operator
+    </select>
+
+    <select id="getOperators" parameterType="Operator" resultType="Operator">
+        select *
+        from operator
+        <where>
+            <if test="op_user_name != null">
+                and op_user_name = #{op_user_name}
+            </if>
+            <if test="op_real_name != null">
+                and op_real_name = #{op_real_name}
+            </if>
+            <if test="op_institute != null">
+                and op_institute = #{op_institute}
+            </if>
+            <if test="op_role != null">
+                and op_role = #{op_role}
+            </if>
+            <if test="op_gender != null">
+                and op_gender = #{op_gender}
+            </if>
+            <if test="op_email != null">
+                and op_email = #{op_email}
+            </if>
+            <if test="op_phone != null">
+                and op_phone = #{op_phone}
+            </if>
+            <if test="op_status != null">
+                and op_status = #{op_status}
+            </if>
+        </where>
     </select>
 </mapper>
