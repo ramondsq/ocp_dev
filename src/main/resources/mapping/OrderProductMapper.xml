@@ -3,5 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ocp.cuit.dao.OrderProductDao">
-
+    <select id="getAllStockOrderProducts" resultType="StockOrderProduct">
+        select *
+        from stockorder_product
+    </select>
+    <select id="getStockOrderProducts" parameterType="String" resultType="StockOrderProduct">
+        select *
+        from stockorder_product
+        where sop_order_id = #{sop_order_id}
+    </select>
+    <select id="getAllWholesaleOrderProducts" resultType="WholesaleOrderProduct">
+        select *
+        from wholesaleorder_product
+    </select>
+    <select id="getWholesaleOrderProducts" parameterType="String" resultType="WholesaleOrderProduct">
+        select *
+        from wholesaleorder_product
+        where wsop_order_id = #{wsop_order_id}
+    </select>
 </mapper>
