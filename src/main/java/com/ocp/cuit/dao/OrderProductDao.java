@@ -18,10 +18,10 @@ public interface OrderProductDao {
 
     /**
      * 获取订单号对应的备货订单-产品映射表项
-     * @param orderNumber
+     * @param orderId
      * @return
      */
-    List<StockOrderProduct> getStockOrderProducts(String orderNumber);
+    List<StockOrderProduct> getStockOrderProducts(String orderId);
 
 
     /**
@@ -33,8 +33,8 @@ public interface OrderProductDao {
 
     /**
      * 获取订单号对应的批发订单-产品映射表项
-     * @param orderNumber
+     * @param orderId
      * @return
      */
-    List<WholesaleOrderProduct> getWholesaleOrderProducts(String orderNumber);
+    List<WholesaleOrderProduct> getWholesaleOrderProducts(String orderId);
 }
