@@ -2,70 +2,70 @@ package com.ocp.cuit.pojo;
 
 //批发订单-产品映射
 public class WholesaleOrderProduct {
-   private String wsp_order_number;    //订单编号
-   private Integer wsp_product_id;     //产品编号
-   private Double wsp_product_qty;     //数量
-   private Double wsp_invoice_price;   //开票价格
-   private Double wsp_total_price;     //总金额
-   private Double wsp_volume;          //总体积
+   private String wsop_order_id;    //订单编号
+   private Integer wsop_product_id;     //产品编号
+   private Double wsop_product_qty;     //数量
+   private Double wsop_invoice_price;   //开票价格
+   private Double wsop_total_price;     //总金额
+   private Double wsop_volume;          //总体积
 
-   public String getWsp_order_number() {
-      return wsp_order_number;
+   public String getWsop_order_id() {
+      return wsop_order_id;
    }
 
-   public void setWsp_order_number(String wsp_order_number) {
-      this.wsp_order_number = wsp_order_number;
+   public void setWsop_order_id(String wsop_order_id) {
+      this.wsop_order_id = wsop_order_id;
    }
 
-   public Integer getWsp_product_id() {
-      return wsp_product_id;
+   public Integer getWsop_product_id() {
+      return wsop_product_id;
    }
 
-   public void setWsp_product_id(Integer wsp_product_id) {
-      this.wsp_product_id = wsp_product_id;
+   public void setWsop_product_id(Integer wsop_product_id) {
+      this.wsop_product_id = wsop_product_id;
    }
 
-   public Double getWsp_product_qty() {
-      return wsp_product_qty;
+   public Double getWsop_product_qty() {
+      return wsop_product_qty;
    }
 
-   public void setWsp_product_qty(Double wsp_product_qty) {
-      this.wsp_product_qty = wsp_product_qty;
+   public void setWsop_product_qty(Double wsop_product_qty) {
+      this.wsop_product_qty = wsop_product_qty;
    }
 
-   public Double getWsp_invoice_price() {
-      return wsp_invoice_price;
+   public Double getWsop_invoice_price() {
+      return wsop_invoice_price;
    }
 
-   public void setWsp_invoice_price(Double wsp_invoice_price) {
-      this.wsp_invoice_price = wsp_invoice_price;
+   public void setWsop_invoice_price(Double wsop_invoice_price) {
+      this.wsop_invoice_price = wsop_invoice_price;
    }
 
-   public Double getWsp_total_price() {
-      return wsp_total_price;
+   public Double getWsop_total_price() {
+      return wsop_total_price;
    }
 
-   public void setWsp_total_price(Double wsp_total_price) {
-      this.wsp_total_price = wsp_total_price;
+   public void setWsop_total_price(Double wsop_total_price) {
+      this.wsop_total_price = wsop_total_price;
    }
 
-   public Double getWsp_volume() {
-      return wsp_volume;
+   public Double getWsop_volume() {
+      return wsop_volume;
    }
 
-   public void setWsp_volume(Double wsp_volume) {
-      this.wsp_volume = wsp_volume;
+   public void setWsop_volume(Double wsop_volume) {
+      this.wsop_volume = wsop_volume;
    }
 
    @Override
    public String toString() {
       return "WholesaleOrderProduct{" +
-              "wsp_order_number='" + wsp_order_number + '\'' +
-              ", wsp_product_id=" + wsp_product_id +
-              ", wsp_product_qty=" + wsp_product_qty +
-              ", wsp_invoice_price=" + wsp_invoice_price +
-              ", wsp_total_price=" + wsp_total_price +
-              ", wsp_volume=" + wsp_volume +
+              "wsop_order_id='" + wsop_order_id + '\'' +
+              ", wsop_product_id=" + wsop_product_id +
+              ", wsop_product_qty=" + wsop_product_qty +
+              ", wsop_invoice_price=" + wsop_invoice_price +
+              ", wsop_total_price=" + wsop_total_price +
+              ", wsop_volume=" + wsop_volume +
               '}';
    }
 }
