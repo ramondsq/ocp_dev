@@ -290,7 +290,7 @@ create table wholesale_order
     wso_pickup_method        varchar(10)
         check (wso_pickup_method in ('汽运', '海运', '铁运', '快递', '自提')),
     #提货方式(汽运，海运，铁运，快递和自提)
-    sto_submit_datetime      datetime             default now(),                    #提交批发订单时间
+    wso_submit_datetime      datetime             default now(),                    #提交批发订单时间
     wso_remark               varchar(100),                                          #备注
     wso_file_path            varchar(50),                                           #附件文件路径
     wso_status               int(10)     NOT NULL default 0 check (wso_status = 0 or wso_status = 1 or wso_status = 2 or
