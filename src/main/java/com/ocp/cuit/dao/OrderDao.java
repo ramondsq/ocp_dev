@@ -24,15 +24,22 @@ public interface OrderDao {
      */
     List<StockOrder> getStockOrders(StockOrder stockOrder);
     /**
+     * 使用动态查询，更新符合条件的备货订单
+     * @param stockOrder
+     * @return
+     */
+    int updateStockOrder(StockOrder stockOrder);
+    /**
      * 插入一个备货订单
      * @param stockOrder
+     * @return 0失败,1成功
      */
-    void addNewStockOrder(StockOrder stockOrder);
+    int addNewStockOrder(StockOrder stockOrder);
     /**
      * 删除一个备货订单
      * @param orderNumber
      */
-    void deleteStockOrder(String orderNumber);
+    int deleteStockOrder(String orderNumber);
 
 
     //===================================================
@@ -43,25 +50,28 @@ public interface OrderDao {
      * @return  批发订单列表
      */
     List<WholesaleOrder> getAllWholesaleOrders();
-
     /**
      * 获取符合条件的批发订单
      * @param wholesaleOrder
      * @return 符合条件的批发订单
      */
     List<WholesaleOrder> getWholesaleOrders(WholesaleOrder wholesaleOrder);
-
+    /**
+     * 更新符合条件的批发订单
+     * @param wholesaleOrder
+     * @return
+     */
+    int updateWholesaleOrder(WholesaleOrder wholesaleOrder);
     /**
      * 插入一个批发订单
      * @param wholesaleOrder
      */
-    void addNewWholesaleOrder(WholesaleOrder wholesaleOrder);
-
+    int addNewWholesaleOrder(WholesaleOrder wholesaleOrder);
     /**
      * 删除一个批发订单
      * @param orderNumber
      */
-    void deleteWholesaleOrder(String orderNumber);
+    int deleteWholesaleOrder(String orderNumber);
 
 
     //====================================================

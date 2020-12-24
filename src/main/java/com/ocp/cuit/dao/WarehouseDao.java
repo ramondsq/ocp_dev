@@ -15,4 +15,10 @@ public interface WarehouseDao {
      * @return 仓库信息列表
      */
     List<Warehouse> getAllWarehouses();
+
+    /**
+     * 获取所有仓库的编号和名称
+     * @return 所有仓库的编号和名称列表
+     */
+    List<Warehouse> getWarehouses();
 }
