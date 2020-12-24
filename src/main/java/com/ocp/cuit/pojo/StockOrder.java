@@ -14,7 +14,7 @@ public class StockOrder {
    private Date sto_submit_datetime;      //订单提交日期
    private String sto_remark;             //备注
    private String sto_file_path;          //文件路径
-   private String sto_status;             //订单状态
+   private Integer sto_status;             //订单状态
    private String sto_reason;             //驳回原因
    private String sto_reviewer_user_name;           //初审人用户名
    private String sto_rereviewer_user_name;         //复核人用户名
@@ -99,11 +99,11 @@ public class StockOrder {
       this.sto_file_path = sto_file_path;
    }
 
-   public String getSto_status() {
+   public Integer getSto_status() {
       return sto_status;
    }
 
-   public void setSto_status(String sto_status) {
+   public void setSto_status(Integer sto_status) {
       this.sto_status = sto_status;
    }
 

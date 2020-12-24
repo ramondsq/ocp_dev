@@ -15,7 +15,7 @@ public class WholesaleOrder {
     private Date sto_submit_datetime;      //订单提交日期
     private String wso_remark;                //备注
     private String wso_file_path;             //文件路径
-    private String wso_status;                //订单状态
+    private Integer wso_status;                //订单状态
     private String wso_reason;                //驳回原因
     private String wso_reviewer_user_name;              //初审人用户名
     private String wso_rereviewer_user_name;            //复核人用户名
@@ -108,11 +108,11 @@ public class WholesaleOrder {
         this.wso_file_path = wso_file_path;
     }
 
-    public String getWso_status() {
+    public Integer getWso_status() {
         return wso_status;
     }
 
-    public void setWso_status(String wso_status) {
+    public void setWso_status(Integer wso_status) {
         this.wso_status = wso_status;
     }
 
