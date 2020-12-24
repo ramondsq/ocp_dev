@@ -92,6 +92,14 @@ public class WholesaleOrder {
         this.wso_pickup_method = wso_pickup_method;
     }
 
+    public Date getSto_submit_datetime() {
+        return sto_submit_datetime;
+    }
+
+    public void setSto_submit_datetime(Date sto_submit_datetime) {
+        this.sto_submit_datetime = sto_submit_datetime;
+    }
+
     public String getWso_remark() {
         return wso_remark;
     }
@@ -143,7 +151,7 @@ public class WholesaleOrder {
     @Override
     public String toString() {
         return "WholesaleOrder{" +
-                "wso_order_number=" + wso_order_number +
+                "wso_order_number='" + wso_order_number + '\'' +
                 ", wso_submit_datetime=" + wso_submit_datetime +
                 ", wso_invoice_title='" + wso_invoice_title + '\'' +
                 ", wso_retailer_id=" + wso_retailer_id +
@@ -152,12 +160,13 @@ public class WholesaleOrder {
                 ", wso_receiver='" + wso_receiver + '\'' +
                 ", wso_phone='" + wso_phone + '\'' +
                 ", wso_pickup_method='" + wso_pickup_method + '\'' +
+                ", sto_submit_datetime=" + sto_submit_datetime +
                 ", wso_remark='" + wso_remark + '\'' +
                 ", wso_file_path='" + wso_file_path + '\'' +
-                ", wso_status='" + wso_status + '\'' +
+                ", wso_status=" + wso_status +
                 ", wso_reason='" + wso_reason + '\'' +
-                ", wso_reviewer='" + wso_reviewer_user_name + '\'' +
-                ", wso_rereviewer='" + wso_rereviewer_user_name + '\'' +
+                ", wso_reviewer_user_name='" + wso_reviewer_user_name + '\'' +
+                ", wso_rereviewer_user_name='" + wso_rereviewer_user_name + '\'' +
                 '}';
     }
 }
