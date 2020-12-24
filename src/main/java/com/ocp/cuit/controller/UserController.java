@@ -1,6 +1,7 @@
 package com.ocp.cuit.controller;
 
 import com.ocp.cuit.pojo.OperatorLogin;
+import com.ocp.cuit.pojo.Retailer;
 import com.ocp.cuit.pojo.RetailerLogin;
 import com.ocp.cuit.service.UserService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +25,15 @@ public class UserController {
     @RequestMapping(path = "/retailerLogin", method = RequestMethod.POST)
     public Map<String, String> retailerLogin(RetailerLogin retailerInfo) {
         return userService.retailerLogin(retailerInfo);
+    }
+
+    /**
+     * 获取符合条件的经销商信息
+     * @param retailer
+     * @return 符合条件的经销商信息列表
+     */
+    public Map<String, String> getRetailerInfo(Retailer retailer) {
+        return null;
     }
 
     /**
