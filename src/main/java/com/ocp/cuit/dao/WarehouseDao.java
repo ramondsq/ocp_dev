@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 @Mapper
@@ -20,5 +21,5 @@ public interface WarehouseDao {
      * 获取所有仓库的编号和名称
      * @return 所有仓库的编号和名称列表
      */
-    List<Warehouse> getWarehouses();
+    List<Map<String, Object>> getWarehouses();
 }
