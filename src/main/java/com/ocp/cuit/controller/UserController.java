@@ -3,6 +3,7 @@ package com.ocp.cuit.controller;
 import com.ocp.cuit.pojo.OperatorLogin;
 import com.ocp.cuit.pojo.RetailerLogin;
 import com.ocp.cuit.service.UserService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 public class UserController {
     @Resource
