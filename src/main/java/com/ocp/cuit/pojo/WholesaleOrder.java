@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class WholesaleOrder {
     private String wso_order_number;         //订单编号
-    private Date wso_submit_datetime;         //订单提交时间
     private String wso_invoice_title;         //抬头
     private Integer wso_retailer_id;          //经销商编号
     private Integer wso_out_warehouse_id;     //出货仓库编号
@@ -12,7 +11,7 @@ public class WholesaleOrder {
     private String wso_receiver;              //收货人
     private String wso_phone;                 //手机号
     private String wso_pickup_method;         //提货方式
-    private Date sto_submit_datetime;      //订单提交日期
+    private Date wso_submit_datetime;         //订单提交时间
     private String wso_remark;                //备注
     private String wso_file_path;             //文件路径
     private Integer wso_status;                //订单状态
@@ -92,14 +91,6 @@ public class WholesaleOrder {
         this.wso_pickup_method = wso_pickup_method;
     }
 
-    public Date getSto_submit_datetime() {
-        return sto_submit_datetime;
-    }
-
-    public void setSto_submit_datetime(Date sto_submit_datetime) {
-        this.sto_submit_datetime = sto_submit_datetime;
-    }
-
     public String getWso_remark() {
         return wso_remark;
     }
@@ -160,7 +151,6 @@ public class WholesaleOrder {
                 ", wso_receiver='" + wso_receiver + '\'' +
                 ", wso_phone='" + wso_phone + '\'' +
                 ", wso_pickup_method='" + wso_pickup_method + '\'' +
-                ", sto_submit_datetime=" + sto_submit_datetime +
                 ", wso_remark='" + wso_remark + '\'' +
                 ", wso_file_path='" + wso_file_path + '\'' +
                 ", wso_status=" + wso_status +
