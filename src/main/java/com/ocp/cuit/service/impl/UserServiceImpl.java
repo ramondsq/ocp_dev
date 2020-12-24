@@ -2,12 +2,14 @@ package com.ocp.cuit.service.impl;
 
 import com.ocp.cuit.dao.UserDao;
 import com.ocp.cuit.pojo.OperatorLogin;
+import com.ocp.cuit.pojo.Retailer;
 import com.ocp.cuit.pojo.RetailerLogin;
 import com.ocp.cuit.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -44,6 +46,22 @@ public class UserServiceImpl implements UserService {
         } else {
             map.put("code", "0");
             map.put("msg", "失败");
+        }
+
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> retailerInfo(Retailer retailer) {
+        List<Retailer> list = userDao.getRetailer(retailer);
+
+        Map<String, Object> map = new HashMap<>();
+
+        if (list.size() > 0) {
+            map.put("code", "1");
+            map.put("retailer", list);
+        } else {
+            map.put("code", "0");
         }
 
         return map;

@@ -32,8 +32,9 @@ public class UserController {
      * @param retailer
      * @return 符合条件的经销商信息列表
      */
-    public Map<String, String> getRetailerInfo(Retailer retailer) {
-        return null;
+    @RequestMapping("/getRetailerInfo")
+    public Map<String, Object> getRetailerInfo(Retailer retailer) {
+        return userService.retailerInfo(retailer);
     }
 
     /**

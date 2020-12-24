@@ -24,7 +24,7 @@
         select *
         from retailer
         <where>
-            <if test="retailer_id != null">
+            <if test="retailer_id != 0">
                 and retailer_id = #{retailer_id}
             </if>
             <if test="retailer_name != null">
@@ -40,28 +40,28 @@
                 and retailer_store_name = #{retailer_store_name}
             </if>
             <if test="retailer_institute != null">
-            and retailer_store_institute = #{retailer_store_institute}
+            and retailer_institute = #{retailer_institute}
             </if>
             <if test="retailer_type != null">
-                and retailer_store_type = #{retailer_store_type}
+                and retailer_type = #{retailer_type}
             </if>
             <if test="retailer_user_name != null">
-                and retailer_store_user_name = #{retailer_store_user_name}
+                and retailer_user_name = #{retailer_user_name}
             </if>
             <if test="retailer_contact_name != null">
-                and retailer_store_contact_name = #{retailer_store_contact_name}
+                and retailer_contact_name = #{retailer_contact_name}
             </if>
             <if test="retailer_email != null">
-                and retailer_store_email = #{retailer_store_email}
+                and retailer_email = #{retailer_email}
             </if>
             <if test="retailer_phone != null">
-                and retailer_store_phone = #{retailer_store_phone}
+                and retailer_phone = #{retailer_phone}
             </if>
             <if test="retailer_status != null">
-                and retailer_store_status = #{retailer_store_status}
+                and retailer_status = #{retailer_status}
             </if>
             <if test="retailer_remark != null">
-                and retailer_store_remark = #{retailer_store_remark}
+                and retailer_remark = #{retailer_remark}
             </if>
         </where>
     </select>

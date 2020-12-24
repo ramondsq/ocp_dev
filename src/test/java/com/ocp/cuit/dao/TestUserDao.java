@@ -47,6 +47,7 @@ public class TestUserDao {
     @Test
     public void testGetRetailer() {
         //retailer.setRetailer_id(1);
+        retailer.setRetailer_user_name("retailer1");
         System.out.println(userDao.getRetailer(retailer));
     }
 
