@@ -129,4 +129,24 @@ public class Product {
     public void setIs_selling(Integer is_selling) {
         this.is_selling = is_selling;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "product_id=" + product_id +
+                ", product_line='" + product_line + '\'' +
+                ", product_name='" + product_name + '\'' +
+                ", product_qty=" + product_qty +
+                ", unit_measurement_name='" + unit_measurement_name + '\'' +
+                ", product_type='" + product_type + '\'' +
+                ", product_model='" + product_model + '\'' +
+                ", product_standard_price=" + product_standard_price +
+                ", product_volume=" + product_volume +
+                ", product_weight=" + product_weight +
+                ", product_length=" + product_length +
+                ", product_width=" + product_width +
+                ", product_height=" + product_height +
+                ", is_selling=" + is_selling +
+                '}';
+    }
 }
