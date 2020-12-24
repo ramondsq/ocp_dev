@@ -34,6 +34,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, String> operatorLogin(OperatorLogin operatorLogin) {
-        return null;
+        OperatorLogin operator = userDao.checkOperatorLogin(operatorLogin);
+
+        Map<String, String> map = new HashMap<>();
+
+        if (operator != null) {
+            map.put("code", "1");
+            map.put("msg", "成功");
+        } else {
+            map.put("code", "0");
+            map.put("msg", "失败");
+        }
+
+        return map;
     }
 }
