@@ -7,4 +7,8 @@
         select *
         from product
     </select>
+    <select id="getProductName" resultType="Product">
+        select product_id, product_name
+        from product
+    </select>
 </mapper>

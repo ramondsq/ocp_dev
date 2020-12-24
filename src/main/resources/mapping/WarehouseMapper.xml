@@ -7,4 +7,8 @@
         select *
         from warehouse
     </select>
+    <select id="getWarehouses" resultType="Warehouse">
+        select warehouse_id, warehouse_name
+        from warehouse;
+    </select>
 </mapper>
