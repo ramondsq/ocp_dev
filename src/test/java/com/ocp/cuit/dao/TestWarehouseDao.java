@@ -15,4 +15,9 @@ public class TestWarehouseDao {
     public void testGetAllWarehouses() {
         System.out.println(warehouseDao.getAllWarehouses());
     }
+
+    @Test
+    public void testGetWarehouses() {
+        System.out.println(warehouseDao.getWarehouses());
+    }
 }

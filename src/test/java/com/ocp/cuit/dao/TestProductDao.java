@@ -14,4 +14,9 @@ public class TestProductDao {
     public void testGetAllProducts() {
         System.out.println(productDao.getAllProducts());
     }
+
+    @Test
+    public void testGetProductNmae() {
+        System.out.println(productDao.getProductName());
+    }
 }
