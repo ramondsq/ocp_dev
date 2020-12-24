@@ -16,8 +16,8 @@ public class StockOrder {
    private String sto_file_path;          //文件路径
    private String sto_status;             //订单状态
    private String sto_reason;             //驳回原因
-   private String sto_reviewer;           //初审人用户名
-   private String sto_rereviewer;         //复核人用户名
+   private String sto_reviewer_user_name;           //初审人用户名
+   private String sto_rereviewer_user_name;         //复核人用户名
 
    public String getSto_order_number() {
       return sto_order_number;
@@ -115,20 +115,20 @@ public class StockOrder {
       this.sto_reason = sto_reason;
    }
 
-   public String getSto_reviewer() {
-      return sto_reviewer;
+   public String getSto_reviewer_user_name() {
+      return sto_reviewer_user_name;
    }
 
-   public void setSto_reviewer(String sto_reviewer) {
-      this.sto_reviewer = sto_reviewer;
+   public void setSto_reviewer_user_name(String sto_reviewer_user_name) {
+      this.sto_reviewer_user_name = sto_reviewer_user_name;
    }
 
-   public String getSto_rereviewer() {
-      return sto_rereviewer;
+   public String getSto_rereviewer_user_name() {
+      return sto_rereviewer_user_name;
    }
 
-   public void setSto_rereviewer(String sto_rereviewer) {
-      this.sto_rereviewer = sto_rereviewer;
+   public void setSto_rereviewer_user_name(String sto_rereviewer_user_name) {
+      this.sto_rereviewer_user_name = sto_rereviewer_user_name;
    }
 
    @Override
@@ -146,8 +146,8 @@ public class StockOrder {
               ", sto_file_path='" + sto_file_path + '\'' +
               ", sto_status='" + sto_status + '\'' +
               ", sto_reason='" + sto_reason + '\'' +
-              ", sto_reviewer='" + sto_reviewer + '\'' +
-              ", sto_rereviewer='" + sto_rereviewer + '\'' +
+              ", sto_reviewer='" + sto_reviewer_user_name + '\'' +
+              ", sto_rereviewer='" + sto_rereviewer_user_name + '\'' +
               '}';
    }
 }

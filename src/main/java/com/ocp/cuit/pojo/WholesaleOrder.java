@@ -16,8 +16,8 @@ public class WholesaleOrder {
    private String wso_file_path;             //文件路径
    private String wso_status;                //订单状态
    private String wso_reason;                //驳回原因
-   private String wso_reviewer;              //初审人用户名
-   private String wso_rereviewer;            //复核人用户名
+   private String wso_reviewer_user_name;              //初审人用户名
+   private String wso_rereviewer_user_name;            //复核人用户名
 
    public String getWso_order_number() {
       return wso_order_number;
@@ -123,20 +123,20 @@ public class WholesaleOrder {
       this.wso_reason = wso_reason;
    }
 
-   public String getWso_reviewer() {
-      return wso_reviewer;
+   public String getWso_reviewer_user_name() {
+      return wso_reviewer_user_name;
    }
 
-   public void setWso_reviewer(String wso_reviewer) {
-      this.wso_reviewer = wso_reviewer;
+   public void setWso_reviewer_user_name(String wso_reviewer_user_name) {
+      this.wso_reviewer_user_name = wso_reviewer_user_name;
    }
 
-   public String getWso_rereviewer() {
-      return wso_rereviewer;
+   public String getWso_rereviewer_user_name() {
+      return wso_rereviewer_user_name;
    }
 
-   public void setWso_rereviewer(String wso_rereviewer) {
-      this.wso_rereviewer = wso_rereviewer;
+   public void setWso_rereviewer_user_name(String wso_rereviewer_user_name) {
+      this.wso_rereviewer_user_name = wso_rereviewer_user_name;
    }
 
    @Override
@@ -155,8 +155,8 @@ public class WholesaleOrder {
               ", wso_file_path='" + wso_file_path + '\'' +
               ", wso_status='" + wso_status + '\'' +
               ", wso_reason='" + wso_reason + '\'' +
-              ", wso_reviewer='" + wso_reviewer + '\'' +
-              ", wso_rereviewer='" + wso_rereviewer + '\'' +
+              ", wso_reviewer='" + wso_reviewer_user_name + '\'' +
+              ", wso_rereviewer='" + wso_rereviewer_user_name + '\'' +
               '}';
    }
 }
