@@ -243,7 +243,7 @@ create table stock_order
     sto_in_warehouse_id      int(10),                                                            #入货仓库编号 外键
     sto_pickup_method        varchar(10)          default '配送' check (sto_pickup_method = '配送'), #提货方式 (仅配送)
     sto_period_demand        date,                                                               #备货需求时间段_年月日 (上旬：1日 中旬：11日 下旬：20)
-    sto_submit_datetime      datetime,                                                           #提交备货订单时间
+    sto_submit_datetime      datetime             default now(),                                 #提交备货订单时间
     sto_remark               varchar(100),                                                       #备注
     sto_file_path            varchar(50),                                                        #附件文件路径
     sto_status               int(20)     NOT NULL default 0 check (sto_status = 0 or sto_status = 1 or sto_status = 2 or
@@ -263,18 +263,18 @@ alter table stock_order
     add constraint sto_in_warehouse_id foreign key (sto_in_warehouse_id) references warehouse (warehouse_id);
 # 插入备货订单表测试数据
 insert into stock_order(sto_order_number, sto_invoice_title, sto_retailer_id, sto_out_warehouse_id, sto_in_warehouse_id,
-                        sto_period_demand, sto_submit_datetime, sto_remark, sto_file_path, sto_reason,
+                        sto_period_demand,  sto_remark, sto_file_path, sto_reason,
                         sto_reviewer_user_name, sto_rereviewer_user_name)
-values ('202012210000', '抬头1', 1, 5, 5, 20201101, null, '', '', '', '', ''),
-       ('202012210001', '抬头2', 2, 7, 3, 20201101, null, '', '', '', '', ''),
-       ('202012210002', '抬头3', 3, 7, 9, 20201101, null, '', '', '', '', ''),
-       ('202012210003', '抬头4', 4, 2, 7, 20201115, null, '', '', '', '', ''),
-       ('202012210004', '抬头5', 5, 3, 9, 20201115, null, '', '', '', '', ''),
-       ('202012210005', '抬头6', 6, 6, 6, 20201115, null, '', '', '', '', ''),
-       ('202012210006', '抬头7', 7, 5, 8, 20201130, null, '', '', '', '', ''),
-       ('202012210007', '抬头8', 8, 4, 3, 20201130, null, '', '', '', '', ''),
-       ('202012210008', '抬头9', 9, 8, 8, 20201130, null, '', '', '', '', ''),
-       ('202012210009', '抬头10', 10, 1, 7, 20201130, null, '', '', '', '', '');
+values ('202012210000', '抬头1', 1, 5, 5, 20201101, '', '', '', '', ''),
+       ('202012210001', '抬头2', 2, 7, 3, 20201101, '', '', '', '', ''),
+       ('202012210002', '抬头3', 3, 7, 9, 20201101, '', '', '', '', ''),
+       ('202012210003', '抬头4', 4, 2, 7, 20201115, '', '', '', '', ''),
+       ('202012210004', '抬头5', 5, 3, 9, 20201115, '', '', '', '', ''),
+       ('202012210005', '抬头6', 6, 6, 6, 20201115, '', '', '', '', ''),
+       ('202012210006', '抬头7', 7, 5, 8, 20201130, '', '', '', '', ''),
+       ('202012210007', '抬头8', 8, 4, 3, 20201130, '', '', '', '', ''),
+       ('202012210008', '抬头9', 9, 8, 8, 20201130, '', '', '', '', ''),
+       ('202012210009', '抬头10', 10, 1, 7, 20201130, '', '', '', '', '');
 
 
 # 创建批发订单表
@@ -290,6 +290,7 @@ create table wholesale_order
     wso_pickup_method        varchar(10)
         check (wso_pickup_method in ('汽运', '海运', '铁运', '快递', '自提')),
     #提货方式(汽运，海运，铁运，快递和自提)
+    sto_submit_datetime      datetime             default now(),                    #提交批发订单时间
     wso_remark               varchar(100),                                          #备注
     wso_file_path            varchar(50),                                           #附件文件路径
     wso_status               int(10)     NOT NULL default 0 check (wso_status = 0 or wso_status = 1 or wso_status = 2 or
