@@ -4,6 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface WarehouseService {
-    List<Map<String, Object>> getWarehouses();
-    Map<String, Object> getAllWarehouses();
+//    List<Map<String, Object>> getWarehouses();
+    Map<String, Object> getAllWHNameNId();
 }
