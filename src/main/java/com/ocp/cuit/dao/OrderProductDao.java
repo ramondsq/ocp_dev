@@ -23,6 +23,13 @@ public interface OrderProductDao {
      */
     List<StockOrderProduct> getStockOrderProducts(String orderId);
 
+    /**
+     * 新增一条备货订单-产品映射项
+     * @param stockOrderProduct
+     * @return
+     */
+    int addNewStockOrderProduct(StockOrderProduct stockOrderProduct);
+
 
     /**
      * 获取所有批发订单-产品映射表项
