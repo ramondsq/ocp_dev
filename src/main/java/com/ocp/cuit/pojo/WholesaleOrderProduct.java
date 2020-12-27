@@ -1,6 +1,9 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
 //批发订单-产品映射
+@Component
 public class WholesaleOrderProduct {
    private String wsop_order_id;    //订单编号
    private Integer wsop_product_id;     //产品编号
