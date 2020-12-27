@@ -132,8 +132,8 @@
             <if test="sto_file_path != null">#{sto_file_path},</if>
             <if test="sto_status != null">#{sto_status},</if>
             <if test="sto_reason != null">#{sto_reason},</if>
-            <if test="sto_reviewer_user_name != null">=#{sto_reviewer}, </if>
-            <if test="sto_rereviewer_user_name != null">#{sto_rereviewer}, </if>
+            <if test="sto_reviewer_user_name != null">#{sto_reviewer_user_name}, </if>
+            <if test="sto_rereviewer_user_name != null">#{sto_rereviewer_user_name}, </if>
         </trim>
     </insert>
     <delete id="deleteStockOrder" parameterType="String">
