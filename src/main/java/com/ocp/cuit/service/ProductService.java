@@ -1,6 +1,8 @@
 package com.ocp.cuit.service;
 
-import org.springframework.stereotype.Component;
+import java.util.Map;
 
 public interface ProductService {
+
+    Map<String, Object> getAllProducts();
 }
