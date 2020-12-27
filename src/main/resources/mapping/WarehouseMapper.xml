@@ -3,11 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ocp.cuit.dao.WarehouseDao">
-    <select id="getAllWarehouses" resultType="Warehouse">
+    <!--<select id="getAllWarehouses" resultType="Warehouse">
         select *
         from warehouse
-    </select>
-    <select id="getWarehouses" resultType="Warehouse">
+    </select>-->
+    <select id="getAllWHNameNId" resultType="java.util.HashMap">
         select warehouse_id, warehouse_name
         from warehouse;
     </select>
