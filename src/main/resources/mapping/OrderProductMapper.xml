@@ -7,6 +7,29 @@
         select *
         from stockorder_product
     </select>
+
+    <insert id="addNewStockOrderProduct" parameterType="StockOrderProduct">
+        insert into stockorder_product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sop_order_id != null"> sop_order_id, </if>
+            <if test="sop_product_id != null"> sop_product_id, </if>
+            <if test="sop_product_qty != null"> sop_product_qty, </if>
+            <if test="sop_invoice_price != null"> sop_invoice_price, </if>
+            <if test="sop_total_price != null"> sop_total_price, </if>
+            <if test="sop_volume != null"> sop_volume, </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sop_order_id != null"> #{sop_order_id}, </if>
+            <if test="sop_product_id != null"> #{sop_product_id}, </if>
+            <if test="sop_product_qty != null"> #{sop_product_qty}, </if>
+            <if test="sop_invoice_price != null"> #{sop_invoice_price}, </if>
+            <if test="sop_total_price != null"> #{sop_total_price}, </if>
+            <if test="sop_volume != null"> #{sop_volume}, </if>
+        </trim>
+    </insert>
+
+
     <select id="getStockOrderProducts" parameterType="String" resultType="StockOrderProduct">
         select *
         from stockorder_product
