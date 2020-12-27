@@ -12,12 +12,7 @@ public class TestWarehouseDao {
     private WarehouseDao warehouseDao;
 
     @Test
-    public void testGetAllWarehouses() {
-        System.out.println(warehouseDao.getAllWarehouses());
-    }
-
-    @Test
-    public void testGetWarehouses() {
-        System.out.println(warehouseDao.getWarehouses());
+    public void testGetAllWHNameNId() {
+        System.out.println(warehouseDao.getAllWHNameNId());
     }
 }
