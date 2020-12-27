@@ -1,7 +1,10 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
+@Component
 public class WholesaleOrder {
     private String wso_order_number;         //订单编号
     private String wso_invoice_title;         //抬头
