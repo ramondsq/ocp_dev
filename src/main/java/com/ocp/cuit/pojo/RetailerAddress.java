@@ -1,6 +1,9 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
 //经销商地址信息
+@Component
 public class RetailerAddress {
     private Integer rta_retailer_id;        //编号
     private String rta_address;             //地址
