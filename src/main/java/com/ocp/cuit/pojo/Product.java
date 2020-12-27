@@ -1,6 +1,9 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
 //产品表
+@Component
 public class Product {
     private Integer product_id;             //编号
     private String product_line;            //生产线名
