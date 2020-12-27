@@ -15,17 +15,8 @@ public class WarehouseController {
     @Resource
     private WarehouseService warehouseService;
 
-    /**
-     * 获取所有仓库名
-     * @return 所有仓库名
-     */
-    @RequestMapping("/getWarehouses")
-    public List<Map<String, Object>> getWarehouses() {
-        return warehouseService.getWarehouses();
-    }
-
-    @RequestMapping("/getAllWarehouses")
-    public Map<String, Object> getAllWarehouses() {
-        return warehouseService.getAllWarehouses();
+    @RequestMapping("/getAllWHNameNId")
+    public Map<String, Object> getAllWHNameNId() {
+        return warehouseService.getAllWHNameNId();
     }
 }
