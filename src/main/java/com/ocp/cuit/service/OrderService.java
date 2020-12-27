@@ -1,7 +1,9 @@
 package com.ocp.cuit.service;
 
-import org.springframework.stereotype.Service;
+import com.ocp.cuit.vo.SubmitStockOrderVO;
 
-@Service
+import java.util.Map;
+
 public interface OrderService {
+    Map<String, Object> submitStockOrder(SubmitStockOrderVO submitStockOrderVO);
 }
