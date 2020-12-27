@@ -1,6 +1,9 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
 //仓库表
+@Component
 public class Warehouse {
    private Integer warehouse_id;             //仓库编号
    private String warehouse_name;            //仓库名称
