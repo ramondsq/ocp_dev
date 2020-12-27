@@ -1,8 +1,11 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 //备货订单
+@Component
 public class StockOrder {
    private String sto_order_number;      //编号
    private String sto_invoice_title;      //抬头
