@@ -15,14 +15,14 @@ public class WarehouseServiceImpl implements WarehouseService {
     @Resource
     private WarehouseDao warehouseDao;
 
-    @Override
-    public List<Map<String, Object>> getWarehouses() {
-        return warehouseDao.getWarehouses();
-    }
+//    @Override
+//    public List<Map<String, Object>> getWarehouses() {
+//        return warehouseDao.getAllWarehouses();
+//    }
 
     @Override
-    public Map<String, Object> getAllWarehouses() {
-        List<Warehouse> list = warehouseDao.getAllWarehouses();
+    public Map<String, Object> getAllWHNameNId() {
+        List<Map<String, Object>> list = warehouseDao.getAllWHNameNId();
 
         Map<String, Object> map = new HashMap<>();
 
