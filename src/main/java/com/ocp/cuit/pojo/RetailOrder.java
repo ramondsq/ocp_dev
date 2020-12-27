@@ -1,8 +1,11 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 //零售订单
+@Component
 public class RetailOrder {
    private String rto_transaction_id;    //交易编号
    private Integer rto_retailer_id;       //所属经销商编号
