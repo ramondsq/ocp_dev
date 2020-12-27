@@ -1,6 +1,9 @@
 package com.ocp.cuit.pojo;
 
+import org.springframework.stereotype.Component;
+
 //备货订单-产品映射
+@Component
 public class StockOrderProduct {
    private String sop_order_id;    //订单编号
    private Integer sop_product_id;     //产品编号
