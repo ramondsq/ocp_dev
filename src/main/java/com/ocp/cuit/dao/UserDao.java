@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 @Mapper
@@ -30,27 +31,27 @@ public interface UserDao {
      * 获取所有经销商信息
      * @return 所有经销商信息列表
      */
-    List<Retailer> getAllRetailers();
+    List<Map<String, Object>> getAllRetailers();
 
     /**
      * 根据条件动态查询经销商信息
      * @param retailer
      * @return 符合条件的经销商信息列表
      */
-    List<Retailer> getRetailer(Retailer retailer);
+    List<Map<String, Object>> getRetailer(Retailer retailer);
 
     /**
      * 获取所有经销商地址信息
      * @return 经销商地址信息列表
      */
-    List<RetailerAddress> getAllRetailerAddress();
+    List<Map<String, Object>> getAllRetailerAddress();
 
     /**
      * 根据经销商编号获取对应地址信息
      * @param retailerId
      * @return 地址信息列表
      */
-    List<RetailerAddress> getRetailerAddress(String retailerId);
+    List<Map<String, Object>> getRetailerAddress(String retailerId);
 
 
 
@@ -61,13 +62,13 @@ public interface UserDao {
      * 获取所有运营人员的信息
      * @return 运营人员信息列表
      */
-   List<Operator> getAllOperators();
+   List<Map<String, Object>> getAllOperators();
 
     /**
      * 根据条件动态查询运营人员的信息
      * @param operator
      * @return 符合条件的运营人员信息列表
      */
-   List<Operator> getOperators(Operator operator);
+   List<Map<String, Object>> getOperators(Operator operator);
 
 }
