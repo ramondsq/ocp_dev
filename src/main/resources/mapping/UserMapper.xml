@@ -16,11 +16,11 @@
         and oplog_password = #{oplog_password}
     </select>
 
-    <select id="getAllRetailers" resultType="Retailer" >
+    <select id="getAllRetailers" resultType="java.util.HashMap" >
         select *
         from retailer
     </select>
-    <select id="getRetailer" parameterType="Retailer" resultType="Retailer">
+    <select id="getRetailer" parameterType="Retailer" resultType="java.util.HashMap">
         select *
         from retailer
         <where>
@@ -77,12 +77,12 @@
         where rta_retailer_id = #{rta_retailer_id}
     </select>
 
-    <select id="getAllOperators" resultType="Operator">
+    <select id="getAllOperators" resultType="java.util.HashMap">
         select *
         from operator
     </select>
 
-    <select id="getOperators" parameterType="Operator" resultType="Operator">
+    <select id="getOperators" parameterType="Operator" resultType="java.util.HashMap">
         select *
         from operator
         <where>
