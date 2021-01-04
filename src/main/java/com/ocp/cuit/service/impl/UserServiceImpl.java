@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> retailerInfo(Retailer retailer) {
-        List<Retailer> list = userDao.getRetailer(retailer);
+        List<Map<String, Object>> list = userDao.getRetailer(retailer);
 
         Map<String, Object> map = new HashMap<>();
 
