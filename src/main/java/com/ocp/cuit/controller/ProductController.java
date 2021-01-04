@@ -1,12 +1,14 @@
 package com.ocp.cuit.controller;
 
 import com.ocp.cuit.service.ProductService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 public class ProductController {
     @Resource
