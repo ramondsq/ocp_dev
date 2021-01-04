@@ -3,11 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ocp.cuit.dao.OrderDao">
-    <select id="getAllStockOrders" resultType="StockOrder">
+    <select id="getAllStockOrders" resultType="java.util.HashMap">
         select *
         from stock_order
     </select>
-    <select id="getStockOrders" parameterType="StockOrder" resultType="StockOrder">
+    <select id="getStockOrders" parameterType="StockOrder" resultType="java.util.HashMap">
         select *
         from stock_order
         <where>
@@ -48,10 +48,10 @@
                 and sto_reason=#{sto_reason}
             </if>
             <if test="sto_reviewer_user_name != null">
-                and sto_reviewer_user_name=#{sto_reviewer}
+                and sto_reviewer_user_name=#{sto_reviewer_user_name}
             </if>
             <if test="sto_rereviewer_user_name != null">
-                and sto_rereviewer_user_name=#{sto_rereviewer}
+                and sto_rereviewer_user_name=#{sto_rereviewer_user_name}
             </if>
         </where>
     </select>
@@ -92,10 +92,10 @@
                 sto_reason=#{sto_reason},
             </if>
             <if test="sto_reviewer_user_name != null">
-                to_reviewer_user_name=#{sto_reviewer},
+                to_reviewer_user_name=#{sto_reviewer_user_name},
             </if>
             <if test="sto_rereviewer_user_name != null">
-                sto_rereviewer_user_name=#{sto_rereviewer}
+                sto_rereviewer_user_name=#{sto_rereviewer_user_name}
             </if>
         </set>
         where sto_order_number=#{sto_order_number}
@@ -143,11 +143,11 @@
     </delete>
 
 
-    <select id="getAllWholesaleOrders" resultType="WholesaleOrder">
+    <select id="getAllWholesaleOrders" resultType="java.util.HashMap">
         select *
         from wholesale_order
     </select>
-    <select id="getWholesaleOrders" parameterType="WholesaleOrder" resultType="WholesaleOrder">
+    <select id="getWholesaleOrders" parameterType="WholesaleOrder" resultType="java.util.HashMap">
         select *
         from wholesale_order
         <where>
@@ -233,11 +233,11 @@
     </delete>
 
 
-    <select id="getAllRetailOrders" resultType="RetailOrder">
+    <select id="getAllRetailOrders" resultType="java.util.HashMap">
         select *
         from retail_order
     </select>
-    <select id="getRetailOrders" resultType="RetailOrder">
+    <select id="getRetailOrders" resultType="java.util.HashMap">
         select *
         from retail_order
         <where>
