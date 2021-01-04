@@ -15,10 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -128,6 +125,37 @@ public class OrderServiceImpl implements OrderService {
             List<Map<String, Object>> stockOrderMapList = orderDao.getStockOrders(stockOrder);
             List<Map<String, Object>> wholesaleOrderMapList = orderDao.getWholesaleOrders(wholesaleOrder);
 
+            if (stockOrderMapList.size() > 0) {
+                for (Map<String, Object> m : stockOrderMapList) {
+                    System.out.println(m);
+                    Iterator iter = m.keySet().iterator();
+                    while (iter.hasNext()) {
+                        String key = (String) iter.next();
+                        if (!key.equals("sto_submit_datetime") && !key.equals("sto_order_number") &&
+                            !key.equals("sto_retailer_id") && !key.equals("sto_status") &&
+                            !key.equals("sto_remark") && !key.equals("sto_reason") && !key.equals("sto_reviewer")) {
+                            iter.remove();
+                        }
+
+                    }
+                }
+            }
+            if (wholesaleOrderMapList.size() > 0) {
+                for (Map<String, Object> m : wholesaleOrderMapList) {
+                    System.out.println(m);
+                    Iterator iter = m.keySet().iterator();
+                    while (iter.hasNext()) {
+                        String key = (String) iter.next();
+                        if (!key.equals("wso_submit_datetime") && !key.equals("wso_order_number") &&
+                                !key.equals("wso_retailer_id") && !key.equals("wso_status") &&
+                                !key.equals("wso_remark") && !key.equals("wso_reason") && !key.equals("wso_reviewer")) {
+                            iter.remove();
+                        }
+
+                    }
+                }
+
+            }
             map.put("stock_order", stockOrderMapList);
             map.put("wholesale_order", wholesaleOrderMapList);
             map.put("code", 1);
