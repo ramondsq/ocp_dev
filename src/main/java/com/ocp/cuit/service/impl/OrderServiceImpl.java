@@ -2,9 +2,13 @@ package com.ocp.cuit.service.impl;
 
 import com.ocp.cuit.dao.OrderDao;
 import com.ocp.cuit.dao.OrderProductDao;
+import com.ocp.cuit.dao.UserDao;
+import com.ocp.cuit.pojo.Retailer;
 import com.ocp.cuit.pojo.StockOrder;
 import com.ocp.cuit.pojo.StockOrderProduct;
+import com.ocp.cuit.pojo.WholesaleOrder;
 import com.ocp.cuit.service.OrderService;
+import com.ocp.cuit.vo.RetailerGetAllOrdersVO;
 import com.ocp.cuit.vo.SubmitStockOrderProductVO;
 import com.ocp.cuit.vo.SubmitStockOrderVO;
 import org.springframework.stereotype.Service;
@@ -20,6 +24,9 @@ import java.util.Map;
 public class OrderServiceImpl implements OrderService {
     @Resource
     private OrderDao orderDao;
+
+    @Resource
+    private UserDao userDao;
 
     @Resource
     private OrderProductDao orderProductDao;
@@ -88,6 +95,43 @@ public class OrderServiceImpl implements OrderService {
 
         if (ret1 == 1 && ret2 == 1) {
             map.put("code", 1) ;
+        } else {
+            map.put("code", 0);
+        }
+
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> submitWSOrder() {
+        return null;
+    }
+
+    @Override
+    public Map<String, Object> getOrders(RetailerGetAllOrdersVO retailerGetAllOrdersVO) {
+        Map<String, Object> map = new HashMap<>();
+
+        String username = retailerGetAllOrdersVO.getRtlog_user_name();
+        Retailer retailer = new Retailer();
+        retailer.setRetailer_name(username);
+
+        List<Map<String, Object>> res = userDao.getRetailer(retailer);
+
+        if (res.size() > 0) {
+            StockOrder stockOrder = new StockOrder();
+            stockOrder.setSto_retailer_id((Integer) res.get(0).get("retailer_id"));
+            stockOrder.setSto_status(retailerGetAllOrdersVO.getSto_status());
+            WholesaleOrder wholesaleOrder = new WholesaleOrder();
+            wholesaleOrder.setWso_retailer_id((Integer) res.get(0).get("retailer_id"));
+            wholesaleOrder.setWso_status(retailerGetAllOrdersVO.getSto_status());
+
+            List<Map<String, Object>> stockOrderMapList = orderDao.getStockOrders(stockOrder);
+            List<Map<String, Object>> wholesaleOrderMapList = orderDao.getWholesaleOrders(wholesaleOrder);
+
+            map.put("stock_order", stockOrderMapList);
+            map.put("wholesale_order", wholesaleOrderMapList);
+            map.put("code", 1);
+
         } else {
             map.put("code", 0);
         }
