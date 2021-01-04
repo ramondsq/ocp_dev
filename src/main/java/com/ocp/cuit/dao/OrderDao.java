@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 @Mapper
@@ -22,7 +23,7 @@ public interface OrderDao {
      * @param stockOrder
      * @return 符合条件的备货订单
      */
-    List<StockOrder> getStockOrders(StockOrder stockOrder);
+    List<Map<String, Object>> getStockOrders(StockOrder stockOrder);
     /**
      * 使用动态查询，更新符合条件的备货订单
      * @param stockOrder
@@ -49,13 +50,13 @@ public interface OrderDao {
      * 获取所有批发订单
      * @return  批发订单列表
      */
-    List<WholesaleOrder> getAllWholesaleOrders();
+    List<Map<String, Object>> getAllWholesaleOrders();
     /**
      * 获取符合条件的批发订单
      * @param wholesaleOrder
      * @return 符合条件的批发订单
      */
-    List<WholesaleOrder> getWholesaleOrders(WholesaleOrder wholesaleOrder);
+    List<Map<String, Object>> getWholesaleOrders(WholesaleOrder wholesaleOrder);
     /**
      * 更新符合条件的批发订单
      * @param wholesaleOrder
@@ -88,5 +89,5 @@ public interface OrderDao {
      * @param retailOrder
      * @return 符合条件的零售订单
      */
-    List<RetailOrder> getRetailOrders(RetailOrder retailOrder);
+    List<Map<String, Object>> getRetailOrders(RetailOrder retailOrder);
 }
