@@ -53,4 +53,8 @@ public class OrderController {
 
 
     /*-----以下为运营部分-----*/
+    @RequestMapping("/getReviewOrders")
+    public Map<String ,Object> getReviewOrders(Integer status) {
+        return orderService.getReviewOrders(status);
+    }
 }
