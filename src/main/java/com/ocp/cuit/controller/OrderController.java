@@ -57,4 +57,7 @@ public class OrderController {
     public Map<String ,Object> getReviewOrders(Integer status) {
         return orderService.getReviewOrders(status);
     }
+
+    @RequestMapping("/getAllRetailOrders")
+    public Map<String, Object> getAllRetailOrders() { return orderService.getAllRetailOrders(); }
 }

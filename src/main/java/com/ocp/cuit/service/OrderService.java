@@ -16,4 +16,5 @@ public interface OrderService {
     Map<String, Object> cancelOrder(String order_number);
 
     Map<String, Object> getReviewOrders(Integer status);
+    Map<String, Object> getAllRetailOrders();
 }

@@ -291,4 +291,19 @@ public class OrderServiceImpl implements OrderService {
 
         return map;
     }
+
+    @Override
+    public Map<String, Object> getAllRetailOrders() {
+        List<RetailOrder> list = orderDao.getAllRetailOrders();
+        Map<String, Object> map = new HashMap<>();
+
+        if (list.size() > 0) {
+            map.put("code", 1);
+            map.put("retail_order", list);
+        } else {
+            map.put("code", 0);
+        }
+
+        return map;
+    }
 }
