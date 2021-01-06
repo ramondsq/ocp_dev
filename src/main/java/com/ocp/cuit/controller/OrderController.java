@@ -2,6 +2,7 @@ package com.ocp.cuit.controller;
 
 import com.ocp.cuit.service.OrderService;
 import com.ocp.cuit.vo.RetailerGetAllOrdersVO;
+import com.ocp.cuit.vo.SubmitOrderReviewVO;
 import com.ocp.cuit.vo.SubmitStockOrderVO;
 import com.ocp.cuit.vo.SubmitWSOrderVO;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -36,5 +37,10 @@ public class OrderController {
     @RequestMapping("/getRetailOrderRtr")
     public Map<String, Object> getRetailOrderRtr(String rtlog_user_name) {
         return orderService.getRetailOrderRtr(rtlog_user_name);
+    }
+
+    @RequestMapping("/submitOrderReview")
+    public Map<String, Object> submitOrderReview(SubmitOrderReviewVO submitOrderReviewVO) {
+        return orderService.submitOrderReview(submitOrderReviewVO);
     }
 }
