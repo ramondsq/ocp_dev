@@ -1,5 +1,8 @@
 package com.ocp.cuit.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SubmitWSOrderProductVO {
     private Integer product_id;     //产品编码
     private Double product_qty;     //产品数量
