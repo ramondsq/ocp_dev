@@ -304,51 +304,103 @@
 
     <select id="inquireStockOrders" parameterType="InquireOrdersVO" resultType="java.util.HashMap">
         select sto_submit_datetime submit_datetime,
-               sto_order_number order_number,
-               sto_retailer_id retailer_id,
-               retailer_name,
-               retailer_area,
-               SUM(sop_total_price) price,
-               SUM(sop_volume) volume,
-               sto_reviewer_user_name reviewer_user_name,
-               sto_rereviewer_user_name rereviewer_user_name
+        sto_order_number order_number,
+        sto_retailer_id retailer_id,
+        retailer_name,
+        retailer_area,
+        SUM(sop_total_price) price,
+        SUM(sop_volume) volume,
+        sto_reviewer_user_name reviewer_user_name,
+        sto_rereviewer_user_name rereviewer_user_name
         from stock_order,
-             retailer,
-             stockorder_product
+        retailer,
+        stockorder_product
         <where>
             sto_retailer_id = retailer_id
             and sto_order_number = sop_order_id
             <if test="retailer_name != null">and retailer_name = #{retailer_name}</if>
             <if test="retailer_id != null">and retailer_id = #{retailer_id}</if>
             <if test="order_number != null">and sto_order_number = #{order_number}</if>
-            <if test="submit_datetime != null"> and sto_submit_datetime = #{submit_datetime}</if>
+            <if test="submit_datetime != null">and sto_submit_datetime = #{submit_datetime}</if>
             <if test="status != null">and sto_status = #{status}</if>
         </where>
         group by sto_order_number
     </select>
     <select id="inquireWSOrders" parameterType="InquireOrdersVO" resultType="java.util.HashMap">
         select wso_submit_datetime submit_datetime,
-               wso_order_number order_number,
-               wso_retailer_id retailer_id,
-               retailer_name,
-               retailer_area,
-               SUM(wsop_total_price) price,
-               SUM(wsop_volume) volume,
-               wso_reviewer_user_name reviewer_user_name,
-               wso_rereviewer_user_name rereviewer_user_name
+        wso_order_number order_number,
+        wso_retailer_id retailer_id,
+        retailer_name,
+        retailer_area,
+        SUM(wsop_total_price) price,
+        SUM(wsop_volume) volume,
+        wso_reviewer_user_name reviewer_user_name,
+        wso_rereviewer_user_name rereviewer_user_name
         from wholesale_order,
-             retailer,
-             wholesaleorder_product
+        retailer,
+        wholesaleorder_product
         <where>
             wso_retailer_id = retailer_id
             and wso_order_number = wsop_order_id
             <if test="retailer_name != null">and retailer_name = #{retailer_name}</if>
             <if test="retailer_id != null">and retailer_id = #{retailer_id}</if>
             <if test="order_number != null">and wso_order_number = #{order_number}</if>
-            <if test="submit_datetime != null"> and wso_submit_datetime = #{submit_datetime} </if>
+            <if test="submit_datetime != null">and wso_submit_datetime = #{submit_datetime}</if>
             <if test="status != null">and wso_status = #{status}</if>
         </where>
         group by wso_order_number
+    </select>
 
+    <select id="getOrderDetail" resultType="java.util.HashMap">
+        <if test="orderType == 0">
+            select sto_submit_datetime submit_datetime,
+                   sto_period_demand period_demand,
+                   sto_order_number order_number,
+                   sto_retailer_id retailer_id,
+                   sto_remark remark,
+                   sto_out_warehouse_id out_warehouse_id,
+                   sto_in_warehouse_id in_warehouse_id,
+                   retailer_name,
+                   retailer_store_name,
+                   retailer_area,
+                   retailer_contact_name,
+                   retailer_phone,
+            SUM(sop_total_price) price,
+            SUM(sop_volume) volume,
+            SUM(sop_product_qty) product_qty,
+            sto_reviewer_user_name reviewer_user_name,
+            sto_rereviewer_user_name rereviewer_user_name
+            from stock_order,
+            retailer,
+            stockorder_product
+            where sto_retailer_id = retailer_id
+            and sto_order_number = sop_order_id
+            and sto_order_number = #{order_number}
+            group by sto_order_number
+        </if>
+        <if test="orderType == 1">
+            select wso_submit_datetime submit_datetime,
+                wso_order_number order_number,
+                wso_retailer_id retailer_id,
+                wso_remark remark,
+                wso_out_warehouse_id out_warehouse_id,
+                retailer_name,
+                retailer_store_name,
+                retailer_area,
+                retailer_contact_name,
+                retailer_phone,
+                SUM(wsop_total_price) price,
+                SUM(wsop_volume) volume,
+                SUM(wsop_product_qty) product_qty,
+                wso_reviewer_user_name reviewer_user_name,
+                wso_rereviewer_user_name rereviewer_user_name
+            from wholesale_order,
+                retailer,
+                wholesaleorder_product
+            where wso_retailer_id = retailer_id
+            and wso_order_number = wsop_order_id
+            and wso_order_number = #{order_number}
+            group by wso_order_number
+        </if>
     </select>
 </mapper>
