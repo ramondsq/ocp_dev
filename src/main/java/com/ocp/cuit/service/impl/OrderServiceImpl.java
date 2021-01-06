@@ -254,4 +254,28 @@ public class OrderServiceImpl implements OrderService {
 
         return map;
     }
+
+    @Override
+    public Map<String, Object> cancelOrder(String order_number) {
+        wholesaleOrder.setWso_order_number(order_number);
+        stockOrder.setSto_order_number(order_number);
+
+        int ret1 = orderDao.deleteStockOrder(order_number);
+        if (ret1 == 1) {
+            orderProductDao.deleteStockOrderProduct(order_number);
+        }
+        int ret2 = orderDao.deleteWholesaleOrder(order_number);
+        if (ret2 == 1) {
+            orderProductDao.deleteWSOrderProduct(order_number);
+        }
+
+        Map<String, Object> map = new HashMap<>();
+        if (ret1 == 1 || ret2 == 1) {
+            map.put("code", 1);
+        } else {
+            map.put("code", 0);
+        }
+
+        return map;
+    }
 }
