@@ -30,6 +30,13 @@ public interface OrderProductDao {
      */
     int addNewStockOrderProduct(StockOrderProduct stockOrderProduct);
 
+    /**
+     * 删除一条备货订单-产品映射表项
+     * @param orderId
+     * @return
+     */
+    int deleteStockOrderProduct(String orderId);
+
 
     /**
      * 获取所有批发订单-产品映射表项
@@ -51,4 +58,11 @@ public interface OrderProductDao {
      * @return 成功1 失败0
      */
     int addNewWSOrderProduct(WholesaleOrderProduct wholesaleOrderProduct);
+
+    /**
+     * 删除一条批发-产品映射表项
+     * @param orderId
+     * @return
+     */
+    int deleteWSOrderProduct(String orderId);
 }
