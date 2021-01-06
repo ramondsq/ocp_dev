@@ -16,10 +16,8 @@ import java.util.*;
 public class OrderServiceImpl implements OrderService {
     @Resource
     private OrderDao orderDao;
-
     @Resource
     private UserDao userDao;
-
     @Resource
     private OrderProductDao orderProductDao;
 
@@ -53,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
         //stockOrder.setSto_submit_datetime(new Date());      //订单提交日期  数据库自动生成
         stockOrder.setSto_remark(submitStockOrderVO.getRemark());             //备注
         stockOrder.setSto_file_path("");          //文件路径
-        stockOrder.setSto_status(0);             //订单状态
+        stockOrder.setSto_status(submitStockOrderVO.getStatus());             //订单状态
         stockOrder.setSto_reason("");             //驳回原因
         stockOrder.setSto_reviewer_user_name("");           //初审人用户名
         stockOrder.setSto_rereviewer_user_name("");         //复核人用户名
@@ -275,6 +273,21 @@ public class OrderServiceImpl implements OrderService {
         } else {
             map.put("code", 0);
         }
+
+        return map;
+    }
+
+
+    @Override
+    public Map<String, Object> getReviewOrders(Integer status) {
+        List<Map<String, Object>> sto = orderDao.getReviewOrders(0, status);
+        List<Map<String, Object>> wso = orderDao.getReviewOrders(1, status);
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("code", 1);
+        map.put("sto", sto);
+        map.put("wso", wso);
 
         return map;
     }
