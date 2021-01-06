@@ -3,6 +3,7 @@ package com.ocp.cuit.dao;
 import com.ocp.cuit.pojo.RetailOrder;
 import com.ocp.cuit.pojo.StockOrder;
 import com.ocp.cuit.pojo.WholesaleOrder;
+import com.ocp.cuit.vo.InquireOrdersVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -99,4 +100,18 @@ public interface OrderDao {
      * @return
      */
     List<Map<String ,Object>> getReviewOrders(@Param("orderType") Integer orderType, @Param("status") Integer status);
+
+    /**
+     *
+     * @param inquireOrdersVO
+     * @return
+     */
+    List<Map<String, Object>> inquireStockOrders(InquireOrdersVO inquireOrdersVO);
+
+    /**
+     *
+     * @param inquireOrdersVO
+     * @return
+     */
+    List<Map<String, Object>> inquireWSOrders(InquireOrdersVO inquireOrdersVO);
 }
