@@ -44,4 +44,24 @@
         from wholesaleorder_product
         where wsop_order_id = #{wsop_order_id}
     </select>
+    <insert id="addNewWSOrderProduct" parameterType="WholesaleOrderProduct">
+        insert into wholesaleorder_product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wsop_order_id != null"> wsop_order_id, </if>
+            <if test="wsop_product_id != null"> wsop_product_id, </if>
+            <if test="wsop_product_qty != null"> wsop_product_qty, </if>
+            <if test="wsop_invoice_price != null"> wsop_invoice_price, </if>
+            <if test="wsop_total_price != null"> wsop_total_price, </if>
+            <if test="wsop_volume != null"> wsop_volume, </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wsop_order_id != null"> #{wsop_order_id}, </if>
+            <if test="wsop_product_id != null"> #{wsop_product_id}, </if>
+            <if test="wsop_product_qty != null"> #{wsop_product_qty}, </if>
+            <if test="wsop_invoice_price != null"> #{wsop_invoice_price}, </if>
+            <if test="wsop_total_price != null"> #{wsop_total_price}, </if>
+            <if test="wsop_volume != null"> #{wsop_volume}, </if>
+        </trim>
+    </insert>
 </mapper>
