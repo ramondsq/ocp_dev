@@ -73,6 +73,14 @@ public class SubmitStockOrderVO {
         this.remark = remark;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public List<SubmitStockOrderProductVO> getProductList() {
         return productList;
     }
@@ -91,6 +99,7 @@ public class SubmitStockOrderVO {
                 ", period_demand=" + period_demand +
                 ", submit_datetime=" + submit_datetime +
                 ", remark='" + remark + '\'' +
+                ", status=" + status +
                 ", productList=" + productList +
                 '}';
     }
