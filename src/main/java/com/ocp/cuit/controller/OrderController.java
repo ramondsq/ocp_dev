@@ -1,10 +1,9 @@
 package com.ocp.cuit.controller;
 
-import com.ocp.cuit.pojo.StockOrder;
 import com.ocp.cuit.service.OrderService;
 import com.ocp.cuit.vo.RetailerGetAllOrdersVO;
 import com.ocp.cuit.vo.SubmitStockOrderVO;
-import org.springframework.stereotype.Controller;
+import com.ocp.cuit.vo.SubmitWSOrderVO;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +24,8 @@ public class OrderController {
     }
 
     @RequestMapping("/submitWSOrder")
-    public Map<String, Object> submitWSOrder() {
-        return null;
+    public Map<String, Object> submitWSOrder(@RequestBody SubmitWSOrderVO submitWSOrderVO) {
+        return orderService.submitWSOrder(submitWSOrderVO);
     }
 
     @RequestMapping("/getOrders")
