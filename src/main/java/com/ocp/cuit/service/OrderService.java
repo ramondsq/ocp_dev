@@ -1,9 +1,6 @@
 package com.ocp.cuit.service;
 
-import com.ocp.cuit.vo.RetailerGetAllOrdersVO;
-import com.ocp.cuit.vo.SubmitOrderReviewVO;
-import com.ocp.cuit.vo.SubmitStockOrderVO;
-import com.ocp.cuit.vo.SubmitWSOrderVO;
+import com.ocp.cuit.vo.*;
 
 import java.util.Map;
 
@@ -16,5 +13,10 @@ public interface OrderService {
     Map<String, Object> cancelOrder(String order_number);
 
     Map<String, Object> getReviewOrders(Integer status);
+    Map<String, Object> inquireStockOrders(InquireOrdersVO inquireOrdersVO);
+    Map<String, Object> inquireWSOrders(InquireOrdersVO inquireOrdersVO);
+
+
+
     Map<String, Object> getAllRetailOrders();
 }
