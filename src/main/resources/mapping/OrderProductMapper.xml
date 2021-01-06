@@ -8,6 +8,12 @@
         from stockorder_product
     </select>
 
+    <select id="getStockOrderProducts" parameterType="String" resultType="StockOrderProduct">
+        select *
+        from stockorder_product
+        where sop_order_id = #{sop_order_id}
+    </select>
+
     <insert id="addNewStockOrderProduct" parameterType="StockOrderProduct">
         insert into stockorder_product
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -28,13 +34,17 @@
             <if test="sop_volume != null"> #{sop_volume}, </if>
         </trim>
     </insert>
-
-
-    <select id="getStockOrderProducts" parameterType="String" resultType="StockOrderProduct">
-        select *
+    <delete id="deleteStockOrderProduct" parameterType="String">
+        delete
         from stockorder_product
-        where sop_order_id = #{sop_order_id}
-    </select>
+        where sop_order_id=#{orderId};
+    </delete>
+
+
+
+
+
+
     <select id="getAllWholesaleOrderProducts" resultType="WholesaleOrderProduct">
         select *
         from wholesaleorder_product
@@ -64,4 +74,9 @@
             <if test="wsop_volume != null"> #{wsop_volume}, </if>
         </trim>
     </insert>
+    <delete id="deleteWSOrderProduct" parameterType="String">
+        delete
+        from wholesaleorder_product
+        where wsop_order_id=#{orderId};
+    </delete>
 </mapper>
