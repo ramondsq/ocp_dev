@@ -243,7 +243,7 @@ create table stock_order
     sto_in_warehouse_id      int(10),                                                            #入货仓库编号 外键
     sto_pickup_method        varchar(10)          default '配送' check (sto_pickup_method = '配送'), #提货方式 (仅配送)
     sto_period_demand        date,                                                               #备货需求时间段_年月日 (上旬：1日 中旬：11日 下旬：20)
-    sto_submit_datetime      datetime             default now(),                                 #提交备货订单时间
+    sto_submit_datetime      date                 default (date_format(now(), '%Y-%m-%d')),      #提交备货订单时间
     sto_remark               varchar(100),                                                       #备注
     sto_file_path            varchar(50),                                                        #附件文件路径
     sto_status               int(20)     NOT NULL default 0 check (sto_status = 0 or sto_status = 1 or sto_status = 2 or
@@ -263,7 +263,7 @@ alter table stock_order
     add constraint sto_in_warehouse_id foreign key (sto_in_warehouse_id) references warehouse (warehouse_id);
 # 插入备货订单表测试数据
 insert into stock_order(sto_order_number, sto_invoice_title, sto_retailer_id, sto_out_warehouse_id, sto_in_warehouse_id,
-                        sto_period_demand,  sto_remark, sto_file_path, sto_reason,
+                        sto_period_demand, sto_remark, sto_file_path, sto_reason,
                         sto_reviewer_user_name, sto_rereviewer_user_name)
 values ('202012210000', '抬头1', 1, 5, 5, 20201101, '', '', '', '', ''),
        ('202012210001', '抬头2', 2, 7, 3, 20201101, '', '', '', '', ''),
@@ -280,25 +280,25 @@ values ('202012210000', '抬头1', 1, 5, 5, 20201101, '', '', '', '', ''),
 # 创建批发订单表
 create table wholesale_order
 (
-    wso_order_number         varchar(20) NOT NULL PRIMARY KEY,                      #不为空		主键	订单编号
-    wso_invoice_title        varchar(50),                                           #抬头
-    wso_retailer_id          int(10),                                               #外键	经销商编码
-    wso_out_warehouse_id     int(10),                                               #外键	出货仓库编号
-    wso_detail_address       varchar(100),                                          #详细送货地址
-    wso_receiver             varchar(20),                                           #收货人
-    wso_phone                varchar(20),                                           #联系电话
+    wso_order_number         varchar(20) NOT NULL PRIMARY KEY,                              #不为空		主键	订单编号
+    wso_invoice_title        varchar(50),                                                   #抬头
+    wso_retailer_id          int(10),                                                       #外键	经销商编码
+    wso_out_warehouse_id     int(10),                                                       #外键	出货仓库编号
+    wso_detail_address       varchar(100),                                                  #详细送货地址
+    wso_receiver             varchar(20),                                                   #收货人
+    wso_phone                varchar(20),                                                   #联系电话
     wso_pickup_method        varchar(10)
         check (wso_pickup_method in ('汽运', '海运', '铁运', '快递', '自提')),
     #提货方式(汽运，海运，铁运，快递和自提)
-    wso_submit_datetime      datetime             default now(),                    #提交批发订单时间
-    wso_remark               varchar(100),                                          #备注
-    wso_file_path            varchar(50),                                           #附件文件路径
+    wso_submit_datetime      date                 default (date_format(now(), '%Y-%m-%d')), #提交批发订单时间
+    wso_remark               varchar(100),                                                  #备注
+    wso_file_path            varchar(50),                                                   #附件文件路径
     wso_status               int(10)     NOT NULL default 0 check (wso_status = 0 or wso_status = 1 or wso_status = 2 or
                                                                    wso_status = 3 or
-                                                                   wso_status = 4), #不为空 审核状态（0待处理、1待初审，2待复核，3已通过，4已驳回）
-    wso_reason               varchar(100),                                          #不通过原因
-    wso_reviewer_user_name   varchar(10),                                           #初审人用户名
-    wso_rereviewer_user_name varchar(10)                                            #复核人用户名
+                                                                   wso_status = 4),         #不为空 审核状态（0待处理、1待初审，2待复核，3已通过，4已驳回）
+    wso_reason               varchar(100),                                                  #不通过原因
+    wso_reviewer_user_name   varchar(10),                                                   #初审人用户名
+    wso_rereviewer_user_name varchar(10)                                                    #复核人用户名
 ) engine = InnoDB
   default charset = UTF8;
 # 添加外键约束
