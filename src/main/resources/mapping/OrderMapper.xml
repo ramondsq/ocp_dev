@@ -271,7 +271,9 @@
             retailer_name,
             retailer_area,
             SUM(sop_total_price) price,
-            SUM(sop_volume) volume
+            SUM(sop_volume) volume,
+            sto_reviewer_user_name reviewer_user_name,
+            sto_rereviewer_user_name rereviewer_user_name
             from stock_order,
             retailer,
             stockorder_product
@@ -287,7 +289,9 @@
             retailer_name,
             retailer_area,
             SUM(wsop_total_price) price,
-            SUM(wsop_volume) volume
+            SUM(wsop_volume) volume,
+            wso_reviewer_user_name reviewer_user_name,
+            wso_rereviewer_user_name rereviewer_user_name
             from wholesale_order,
             retailer,
             wholesaleorder_product
@@ -305,7 +309,9 @@
                retailer_name,
                retailer_area,
                SUM(sop_total_price) price,
-               SUM(sop_volume) volume
+               SUM(sop_volume) volume,
+               sto_reviewer_user_name reviewer_user_name,
+               sto_rereviewer_user_name rereviewer_user_name
         from stock_order,
              retailer,
              stockorder_product
@@ -327,7 +333,9 @@
                retailer_name,
                retailer_area,
                SUM(wsop_total_price) price,
-               SUM(wsop_volume) volume
+               SUM(wsop_volume) volume,
+               wso_reviewer_user_name reviewer_user_name,
+               wso_rereviewer_user_name rereviewer_user_name
         from wholesale_order,
              retailer,
              wholesaleorder_product
