@@ -1,8 +1,11 @@
 package com.ocp.cuit.vo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class SubmitWSOrderVO {
     private String invoice_title;      //抬头
     private Integer retailer_id;       //经销商编号
