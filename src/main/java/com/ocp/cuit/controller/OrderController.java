@@ -19,6 +19,8 @@ public class OrderController {
     @Resource
     private OrderService orderService;
 
+    /*-----以下为经销商部分-----*/
+
     @RequestMapping("/submitStockOrder")
     public Map<String, Object> submitStockOrder(@RequestBody SubmitStockOrderVO submitStockOrderVO) {
         return orderService.submitStockOrder(submitStockOrderVO);
@@ -48,4 +50,7 @@ public class OrderController {
     public Map<String, Object> cancelOrder(String order_number) {
         return orderService.cancelOrder(order_number);
     }
+
+
+    /*-----以下为运营部分-----*/
 }
