@@ -1,10 +1,7 @@
 package com.ocp.cuit.controller;
 
 import com.ocp.cuit.service.OrderService;
-import com.ocp.cuit.vo.RetailerGetAllOrdersVO;
-import com.ocp.cuit.vo.SubmitOrderReviewVO;
-import com.ocp.cuit.vo.SubmitStockOrderVO;
-import com.ocp.cuit.vo.SubmitWSOrderVO;
+import com.ocp.cuit.vo.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,6 +53,16 @@ public class OrderController {
     @RequestMapping("/getReviewOrders")
     public Map<String ,Object> getReviewOrders(Integer status) {
         return orderService.getReviewOrders(status);
+    }
+
+    @RequestMapping("/inquireStockOrders")
+    public Map<String, Object> inquireStockOrders(InquireOrdersVO inquireOrdersVO) {
+        return orderService.inquireStockOrders(inquireOrdersVO);
+    }
+
+    @RequestMapping("/inquireWSOrders")
+    public Map<String, Object> inquireWSOrders(InquireOrdersVO inquireOrdersVO) {
+        return orderService.inquireWSOrders(inquireOrdersVO);
     }
 
     @RequestMapping("/getAllRetailOrders")
