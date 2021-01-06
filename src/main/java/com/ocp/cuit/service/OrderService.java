@@ -13,4 +13,5 @@ public interface OrderService {
     Map<String, Object> getOrders(RetailerGetAllOrdersVO retailerGetAllOrdersVO);
     Map<String, Object> getRetailOrderRtr(String rtlog_user_name);
     Map<String, Object> submitOrderReview(SubmitOrderReviewVO submitOrderReviewVO);
+    Map<String, Object> cancelOrder(String order_number);
 }
