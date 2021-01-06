@@ -43,4 +43,9 @@ public class OrderController {
     public Map<String, Object> submitOrderReview(SubmitOrderReviewVO submitOrderReviewVO) {
         return orderService.submitOrderReview(submitOrderReviewVO);
     }
+
+    @RequestMapping("/cancelOrder")
+    public Map<String, Object> cancelOrder(String order_number) {
+        return orderService.cancelOrder(order_number);
+    }
 }
