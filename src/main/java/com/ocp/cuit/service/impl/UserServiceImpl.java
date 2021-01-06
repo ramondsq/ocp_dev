@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Map<String, String> operatorLogin(OperatorLogin operatorLogin) {
+    public Map<String, String> optLogin(OperatorLogin operatorLogin) {
         OperatorLogin operator = userDao.checkOperatorLogin(operatorLogin);
 
         Map<String, String> map = new HashMap<>();

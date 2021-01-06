@@ -8,6 +8,6 @@ import java.util.Map;
 
 public interface UserService {
     Map<String, String> retailerLogin(RetailerLogin retailerLogin);
-    Map<String, String> operatorLogin(OperatorLogin operatorLogin);
+    Map<String, String> optLogin(OperatorLogin operatorLogin);
     Map<String, Object> retailerInfo(Retailer retailer);
 }

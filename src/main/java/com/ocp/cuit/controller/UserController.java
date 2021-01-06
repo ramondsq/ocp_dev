@@ -42,8 +42,8 @@ public class UserController {
      * @param operatorLogin
      * @return loginStatus: 0/1 失败/成功
      */
-    @RequestMapping(path = "/operatorLogin", method = RequestMethod.POST)
-    public Map<String, String> operatorLogin(OperatorLogin operatorLogin) {
-        return userService.operatorLogin(operatorLogin);
+    @RequestMapping(path = "/optLogin", method = RequestMethod.POST)
+    public Map<String, String> optLogin(OperatorLogin operatorLogin) {
+        return userService.optLogin(operatorLogin);
     }
 }
