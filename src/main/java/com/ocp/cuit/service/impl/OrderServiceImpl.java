@@ -231,4 +231,27 @@ public class OrderServiceImpl implements OrderService {
 
         return map;
     }
+
+    @Override
+    public Map<String, Object> submitOrderReview(SubmitOrderReviewVO submitOrderReviewVO) {
+        String order_number = submitOrderReviewVO.getOrder_number();
+        Integer status = submitOrderReviewVO.getStatus();
+
+        wholesaleOrder.setWso_order_number(order_number);
+        wholesaleOrder.setWso_status(status);
+        int ret1 = orderDao.updateWholesaleOrder(wholesaleOrder);
+
+        stockOrder.setSto_order_number(order_number);
+        stockOrder.setSto_status(status);
+        int ret2 = orderDao.updateStockOrder(stockOrder);
+
+        Map<String, Object> map = new HashMap<>();
+        if (ret1 == 1 || ret2 == 1) {
+            map.put("code", 1);
+        } else {
+            map.put("code", 0);
+        }
+
+        return map;
+    }
 }
