@@ -88,4 +88,10 @@ public class TestOrderDao {
         retailOrder.setRto_retailer_id(1);
         System.out.println(orderDao.getRetailOrders(retailOrder));
     }
+
+    @Test
+    public void testGetOrderDetail() {
+        System.out.println(orderDao.getOrderDetail(0, "20210107013602"));
+        System.out.println(orderDao.getOrderDetail(1, "20210107013602"));
+    }
 }
