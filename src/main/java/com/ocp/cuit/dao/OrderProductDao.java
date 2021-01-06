@@ -44,4 +44,11 @@ public interface OrderProductDao {
      * @return
      */
     List<WholesaleOrderProduct> getWholesaleOrderProducts(String orderId);
+
+    /**
+     * 新增一条批发订单-产品映射表项
+     * @param wholesaleOrderProduct
+     * @return 成功1 失败0
+     */
+    int addNewWSOrderProduct(WholesaleOrderProduct wholesaleOrderProduct);
 }
