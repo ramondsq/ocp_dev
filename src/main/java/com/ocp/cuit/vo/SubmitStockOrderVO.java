@@ -14,6 +14,7 @@ public class SubmitStockOrderVO {
     private Date period_demand;        //备货需求时间段
     private Date submit_datetime;      //订单提交日期
     private String remark;             //备注
+    private Integer status;
     private List<SubmitStockOrderProductVO> productList; //产品数据
 
     public Integer getRetailer_id() {
