@@ -3,14 +3,9 @@ package com.ocp.cuit.service.impl;
 import com.ocp.cuit.dao.OrderDao;
 import com.ocp.cuit.dao.OrderProductDao;
 import com.ocp.cuit.dao.UserDao;
-import com.ocp.cuit.pojo.Retailer;
-import com.ocp.cuit.pojo.StockOrder;
-import com.ocp.cuit.pojo.StockOrderProduct;
-import com.ocp.cuit.pojo.WholesaleOrder;
+import com.ocp.cuit.pojo.*;
 import com.ocp.cuit.service.OrderService;
-import com.ocp.cuit.vo.RetailerGetAllOrdersVO;
-import com.ocp.cuit.vo.SubmitStockOrderProductVO;
-import com.ocp.cuit.vo.SubmitStockOrderVO;
+import com.ocp.cuit.vo.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,6 +28,11 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private StockOrderProduct stockOrderProduct;
 
+    @Resource
+    private WholesaleOrder wholesaleOrder;
+    @Resource
+    private WholesaleOrderProduct wholesaleOrderProduct;
+
 //    static int id = 0;
 
     @Override
@@ -42,15 +42,6 @@ public class OrderServiceImpl implements OrderService {
         String dateStr = sdf.format(new Date());
 
         String order_number = dateStr;
-
-//        if (id < 10) {
-//            order_number += "000" + id;
-//        } else if (id < 100) {
-//            order_number += "00" + id;
-//        } else if (id < 1000) {
-//            order_number += "0" + id;
-//        }
-//        ++id;
 
         stockOrder.setSto_order_number(order_number);
         stockOrder.setSto_invoice_title(submitStockOrderVO.getInvoice_title());      //抬头
@@ -100,8 +91,54 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Map<String, Object> submitWSOrder() {
-        return null;
+    public Map<String, Object> submitWSOrder(SubmitWSOrderVO submitWSOrderVO) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        String order_number = sdf.format(new Date());
+
+        //拆分表
+        wholesaleOrder.setWso_order_number(order_number);
+        wholesaleOrder.setWso_invoice_title(submitWSOrderVO.getInvoice_title());
+        wholesaleOrder.setWso_retailer_id(submitWSOrderVO.getRetailer_id());
+        wholesaleOrder.setWso_out_warehouse_id(submitWSOrderVO.getOut_warehouse_id());
+        wholesaleOrder.setWso_detail_address(submitWSOrderVO.getDetail_address());
+        wholesaleOrder.setWso_receiver(submitWSOrderVO.getReceiver());
+        wholesaleOrder.setWso_phone(submitWSOrderVO.getPhone());
+        wholesaleOrder.setWso_pickup_method(submitWSOrderVO.getPickup_method());
+        wholesaleOrder.setWso_submit_datetime(submitWSOrderVO.getSubmit_datetime());
+        wholesaleOrder.setWso_remark("");
+        wholesaleOrder.setWso_file_path("");
+        wholesaleOrder.setWso_status(submitWSOrderVO.getStatus());
+        wholesaleOrder.setWso_reviewer_user_name("");
+        wholesaleOrder.setWso_rereviewer_user_name("");
+
+        List<SubmitWSOrderProductVO> list = submitWSOrderVO.getProductList();
+
+        int ret1 = orderDao.addNewWholesaleOrder(wholesaleOrder);
+        int ret2 = 1;
+
+        wholesaleOrderProduct.setWsop_order_id(order_number);
+        for (SubmitWSOrderProductVO product : list) {
+            wholesaleOrderProduct.setWsop_product_id(product.getProduct_id());
+            wholesaleOrderProduct.setWsop_product_qty(product.getProduct_qty());
+            wholesaleOrderProduct.setWsop_invoice_price(product.getInvoice_price());
+            wholesaleOrderProduct.setWsop_total_price(product.getTotal_price());
+            wholesaleOrderProduct.setWsop_volume(product.getVolume());
+
+            ret2 = orderProductDao.addNewWSOrderProduct(wholesaleOrderProduct);
+            if (ret2 == 0) {
+                break;
+            }
+        }
+
+        Map<String, Object> map = new HashMap<>();
+
+        if (ret1 == 1 && ret2 == 1) {
+            map.put("code", 1);
+        } else {
+            map.put("code", 0);
+        }
+
+        return map;
     }
 
     @Override
