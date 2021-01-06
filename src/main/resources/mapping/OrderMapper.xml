@@ -242,7 +242,7 @@
         from retail_order
         <where>
             <if test="rto_transaction_id != null">and rto_transaction_id=#{rto_transaction_id}</if>
-            <if test="rto_retailer_id != null">and rto_retialer_id=#{rto_retialer_id}</if>
+            <if test="rto_retailer_id != null">and rto_retailer_id=#{rto_retailer_id}</if>
             <if test="rto_source_website != null">and rto_source_website=#{rto_source_website}</if>
             <if test="rto_source_store != null">and rto_source_store=#{rto_source_store}</if>
             <if test="rto_order_status != null">and rto_order_status=#{rto_order_status}</if>

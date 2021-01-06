@@ -1,5 +1,6 @@
 package com.ocp.cuit.dao;
 
+import com.ocp.cuit.pojo.RetailOrder;
 import com.ocp.cuit.pojo.StockOrder;
 import com.ocp.cuit.pojo.WholesaleOrder;
 import org.junit.jupiter.api.Test;
@@ -79,5 +80,12 @@ public class TestOrderDao {
     @Test
     public void testGetAllRetailOrders() {
         System.out.println(orderDao.getAllRetailOrders());
+    }
+
+    @Test
+    public void testGetRetailOrders() {
+        RetailOrder retailOrder = new RetailOrder();
+        retailOrder.setRto_retailer_id(1);
+        System.out.println(orderDao.getRetailOrders(retailOrder));
     }
 }

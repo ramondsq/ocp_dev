@@ -203,4 +203,32 @@ public class OrderServiceImpl implements OrderService {
 
         return map;
     }
+
+
+    @Override
+    public Map<String, Object> getRetailOrderRtr(String rtlog_user_name) {
+        Retailer retailer = new Retailer();
+        retailer.setRetailer_user_name(rtlog_user_name);
+        /* 通过’用户名‘查询'id' */
+        List<Map<String, Object>> retailerInfo = userDao.getRetailer(retailer);
+        Integer rtid = (Integer) retailerInfo.get(0).get("retailer_id");
+        String rtname = retailerInfo.get(0).get("retailer_name").toString();
+
+        RetailOrder retailOrder = new RetailOrder();
+        retailOrder.setRto_retailer_id(rtid);
+
+        Map<String, Object> map = new HashMap<>();
+
+        List<Map<String, Object>> list = orderDao.getRetailOrders(retailOrder);
+
+        if(list.size() > 0) {
+            map.put("code", "1");
+            map.put("retailer_name", rtname);
+            map.put("retail_order", list);
+        } else {
+            map.put("code", "0");
+        }
+
+        return map;
+    }
 }

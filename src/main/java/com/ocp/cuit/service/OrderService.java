@@ -10,4 +10,5 @@ public interface OrderService {
     Map<String, Object> submitStockOrder(SubmitStockOrderVO submitStockOrderVO);
     Map<String, Object> submitWSOrder(SubmitWSOrderVO submitWSOrderVO);
     Map<String, Object> getOrders(RetailerGetAllOrdersVO retailerGetAllOrdersVO);
+    Map<String, Object> getRetailOrderRtr(String rtlog_user_name);
 }

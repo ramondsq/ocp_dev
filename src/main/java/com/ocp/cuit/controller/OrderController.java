@@ -32,4 +32,9 @@ public class OrderController {
     public Map<String, Object> getOrders(RetailerGetAllOrdersVO retailerGetAllOrdersVO) {
         return orderService.getOrders(retailerGetAllOrdersVO);
     }
+
+    @RequestMapping("/getRetailOrderRtr")
+    public Map<String, Object> getRetailOrderRtr(String rtlog_user_name) {
+        return orderService.getRetailOrderRtr(rtlog_user_name);
+    }
 }
