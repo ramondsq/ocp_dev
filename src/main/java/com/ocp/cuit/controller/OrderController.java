@@ -75,6 +75,11 @@ public class OrderController {
         return orderService.reviewWSOrder(reviewOrderVO);
     }
 
+    @RequestMapping("/getOrderDetail")
+    public Map<String, Object> getOrderDetail(String order_number) {
+        return orderService.getOrderDetail(order_number);
+    }
+
     @RequestMapping("/getAllRetailOrders")
     public Map<String, Object> getAllRetailOrders() {
         return orderService.getAllRetailOrders();

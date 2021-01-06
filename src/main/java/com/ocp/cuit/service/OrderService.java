@@ -17,6 +17,7 @@ public interface OrderService {
     Map<String, Object> inquireWSOrders(InquireOrdersVO inquireOrdersVO);
     Map<String, Object> reviewStockOrder(ReviewOrderVO reviewOrderVO);
     Map<String, Object> reviewWSOrder(ReviewOrderVO reviewOrderVO);
+    Map<String, Object> getOrderDetail(String order_number);
 
     Map<String, Object> getAllRetailOrders();
 }

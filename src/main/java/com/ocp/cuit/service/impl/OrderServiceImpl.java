@@ -80,7 +80,7 @@ public class OrderServiceImpl implements OrderService {
         Map<String, Object> map = new HashMap<>();
 
         if (ret1 == 1 && ret2 == 1) {
-            map.put("code", 1) ;
+            map.put("code", 1);
         } else {
             map.put("code", 0);
         }
@@ -167,8 +167,8 @@ public class OrderServiceImpl implements OrderService {
                     while (iter.hasNext()) {
                         String key = (String) iter.next();
                         if (!key.equals("sto_submit_datetime") && !key.equals("sto_order_number") &&
-                            !key.equals("sto_retailer_id") && !key.equals("sto_status") &&
-                            !key.equals("sto_remark") && !key.equals("sto_reason") && !key.equals("sto_reviewer")) {
+                                !key.equals("sto_retailer_id") && !key.equals("sto_status") &&
+                                !key.equals("sto_remark") && !key.equals("sto_reason") && !key.equals("sto_reviewer")) {
                             iter.remove();
                         }
 
@@ -219,7 +219,7 @@ public class OrderServiceImpl implements OrderService {
 
         List<Map<String, Object>> list = orderDao.getRetailOrders(retailOrder);
 
-        if(list.size() > 0) {
+        if (list.size() > 0) {
             map.put("code", "1");
             map.put("retailer_name", rtname);
             map.put("retail_order", list);
@@ -280,7 +280,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Map<String, Object> getReviewOrders(Integer status) {
-        Map<String, Object> orders =  new HashMap<>();
+        Map<String, Object> orders = new HashMap<>();
         List<Map<String, Object>> sto = orderDao.getReviewOrders(0, status);
         List<Map<String, Object>> wso = orderDao.getReviewOrders(1, status);
 
@@ -296,20 +296,6 @@ public class OrderServiceImpl implements OrderService {
         return map;
     }
 
-    @Override
-    public Map<String, Object> getAllRetailOrders() {
-        List<RetailOrder> list = orderDao.getAllRetailOrders();
-        Map<String, Object> map = new HashMap<>();
-
-        if (list.size() > 0) {
-            map.put("code", 1);
-            map.put("retail_order", list);
-        } else {
-            map.put("code", 0);
-        }
-
-        return map;
-    }
 
     @Override
     public Map<String, Object> inquireStockOrders(InquireOrdersVO inquireOrdersVO) {
@@ -323,6 +309,19 @@ public class OrderServiceImpl implements OrderService {
         map.put("code", 1);
         map.put("orders", orders);
 
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> inquireWSOrders(InquireOrdersVO inquireOrdersVO) {
+        Map<String, Object> orders = new HashMap<>();
+        List<Map<String, Object>> wso = orderDao.inquireWSOrders(inquireOrdersVO);
+
+        orders.put("wso", wso);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", 1);
+        map.put("orders", orders);
         return map;
     }
 
@@ -365,18 +364,40 @@ public class OrderServiceImpl implements OrderService {
         }
 
         return map;
-   }
+    }
+
+
 
     @Override
-    public Map<String, Object> inquireWSOrders(InquireOrdersVO inquireOrdersVO) {
+    public Map<String, Object> getOrderDetail(String order_number) {
         Map<String, Object> orders = new HashMap<>();
-        List<Map<String, Object>> wso = orderDao.inquireWSOrders(inquireOrdersVO);
+        List<Map<String, Object>> sto = orderDao.getOrderDetail(0, order_number);
+        List<Map<String, Object>> wso = orderDao.getOrderDetail(1, order_number);
 
+        orders.put("sto", sto);
         orders.put("wso", wso);
 
         Map<String, Object> map = new HashMap<>();
+
+
         map.put("code", 1);
         map.put("orders", orders);
+
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> getAllRetailOrders() {
+        List<RetailOrder> list = orderDao.getAllRetailOrders();
+        Map<String, Object> map = new HashMap<>();
+
+        if (list.size() > 0) {
+            map.put("code", 1);
+            map.put("retail_order", list);
+        } else {
+            map.put("code", 0);
+        }
+
         return map;
     }
 }
