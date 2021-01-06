@@ -280,14 +280,18 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Map<String, Object> getReviewOrders(Integer status) {
+        Map<String, Object> orders =  new HashMap<>();
         List<Map<String, Object>> sto = orderDao.getReviewOrders(0, status);
         List<Map<String, Object>> wso = orderDao.getReviewOrders(1, status);
 
+        orders.put("sto", sto);
+        orders.put("wso", wso);
+
         Map<String, Object> map = new HashMap<>();
 
+
         map.put("code", 1);
-        map.put("sto", sto);
-        map.put("wso", wso);
+        map.put("orders", orders);
 
         return map;
     }
@@ -304,6 +308,34 @@ public class OrderServiceImpl implements OrderService {
             map.put("code", 0);
         }
 
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> inquireStockOrders(InquireOrdersVO inquireOrdersVO) {
+        Map<String, Object> orders = new HashMap<>();
+        List<Map<String, Object>> sto = orderDao.inquireStockOrders(inquireOrdersVO);
+
+        orders.put("sto", sto);
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("code", 1);
+        map.put("orders", orders);
+
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> inquireWSOrders(InquireOrdersVO inquireOrdersVO) {
+        Map<String, Object> orders = new HashMap<>();
+        List<Map<String, Object>> wso = orderDao.inquireWSOrders(inquireOrdersVO);
+
+        orders.put("wso", wso);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", 1);
+        map.put("orders", orders);
         return map;
     }
 }
