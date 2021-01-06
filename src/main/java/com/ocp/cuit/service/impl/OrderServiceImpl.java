@@ -327,6 +327,47 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Map<String, Object> reviewStockOrder(ReviewOrderVO reviewOrderVO) {
+        stockOrder.setSto_order_number(reviewOrderVO.getOrder_number());
+        stockOrder.setSto_status(reviewOrderVO.getStatus());
+        stockOrder.setSto_reason(reviewOrderVO.getReason());
+        stockOrder.setSto_reviewer_user_name(reviewOrderVO.getReviewer_user_name());
+        stockOrder.setSto_rereviewer_user_name(reviewOrderVO.getRereviewer_user_name());
+
+        int ret = orderDao.updateStockOrder(stockOrder);
+
+        Map<String, Object> map = new HashMap<>();
+        if (ret == 1) {
+            map.put("code", 1);
+        } else {
+            map.put("code", 0);
+        }
+
+        return map;
+    }
+
+    @Override
+    public Map<String, Object> reviewWSOrder(ReviewOrderVO reviewOrderVO) {
+        wholesaleOrder.setWso_order_number(reviewOrderVO.getOrder_number());
+        wholesaleOrder.setWso_status(reviewOrderVO.getStatus());
+        wholesaleOrder.setWso_reason(reviewOrderVO.getReason());
+        wholesaleOrder.setWso_reviewer_user_name(reviewOrderVO.getReviewer_user_name());
+        wholesaleOrder.setWso_rereviewer_user_name(reviewOrderVO.getRereviewer_user_name());
+
+        int ret = orderDao.updateWholesaleOrder(wholesaleOrder);
+
+
+        Map<String, Object> map = new HashMap<>();
+        if (ret == 1) {
+            map.put("code", 1);
+        } else {
+            map.put("code", 0);
+        }
+
+        return map;
+   }
+
+    @Override
     public Map<String, Object> inquireWSOrders(InquireOrdersVO inquireOrdersVO) {
         Map<String, Object> orders = new HashMap<>();
         List<Map<String, Object>> wso = orderDao.inquireWSOrders(inquireOrdersVO);

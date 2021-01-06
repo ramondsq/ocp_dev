@@ -65,6 +65,18 @@ public class OrderController {
         return orderService.inquireWSOrders(inquireOrdersVO);
     }
 
+    @RequestMapping("/reviewStockOrder")
+    public Map<String, Object> reviewStockOrder(ReviewOrderVO reviewOrderVO) {
+        return orderService.reviewStockOrder(reviewOrderVO);
+    }
+
+    @RequestMapping("/reviewWSOrder")
+    public Map<String, Object> reviewWSOrder(ReviewOrderVO reviewOrderVO) {
+        return orderService.reviewWSOrder(reviewOrderVO);
+    }
+
     @RequestMapping("/getAllRetailOrders")
-    public Map<String, Object> getAllRetailOrders() { return orderService.getAllRetailOrders(); }
+    public Map<String, Object> getAllRetailOrders() {
+        return orderService.getAllRetailOrders();
+    }
 }
