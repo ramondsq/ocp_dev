@@ -4,6 +4,7 @@ import com.ocp.cuit.pojo.RetailOrder;
 import com.ocp.cuit.pojo.StockOrder;
 import com.ocp.cuit.pojo.WholesaleOrder;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -90,4 +91,12 @@ public interface OrderDao {
      * @return 符合条件的零售订单
      */
     List<Map<String, Object>> getRetailOrders(RetailOrder retailOrder);
+
+
+    /**
+     * 获取符合状态条件的订单, tableType=0时查询stockOrder,tableType=1时查询wsOrder
+     * @param status
+     * @return
+     */
+    List<Map<String ,Object>> getReviewOrders(@Param("orderType") Integer orderType, @Param("status") Integer status);
 }
