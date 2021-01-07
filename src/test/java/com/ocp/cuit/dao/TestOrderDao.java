@@ -34,9 +34,9 @@ public class TestOrderDao {
     @Test
     public void testAddNewStockOrder() {
         StockOrder stockOrder = new StockOrder();
-        stockOrder.setSto_order_number("202012240012");
-        stockOrder.setSto_in_warehouse_id(8);
-        System.out.println(orderDao.addNewStockOrder(stockOrder));
+        //stockOrder.setSto_order_number("202012240012");
+        //stockOrder.setSto_in_warehouse_id(8);
+        //System.out.println(orderDao.addNewStockOrder(stockOrder));
     }
     @Test
     public void testDeleteStockOrder() {
